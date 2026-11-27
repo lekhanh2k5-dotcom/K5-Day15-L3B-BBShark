@@ -17,11 +17,16 @@ Chế độ giả (mặc định khi .env chưa có MODEL_PROVIDER, hoặc MODEL
 Nối model thật: điền .env (chép từ .env.example), rồi viết nhánh gọi API ở dưới theo docs/connect-model.md
 (có ví dụ OpenAI, Claude, model chạy trên máy, và cách nối nhà cung cấp khác). Không dán API key vào file này.
 """
+import json
 import os
+import urllib.error
+import urllib.parse
+import urllib.request
 
 from tracing import model_call
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SHOW_RAW = False   # đổi thành True để in nguyên phản hồi API khi cần debug tên trường
 
 
 def load_env(path=os.path.join(ROOT, ".env")):
@@ -41,6 +46,94 @@ load_env()
 MODEL_PROVIDER = (os.environ.get("MODEL_PROVIDER") or "fake").strip().lower()
 MODEL_NAME = (os.environ.get("MODEL_NAME") or "").strip()
 API_KEY = (os.environ.get("API_KEY") or "").strip()
+API_BASE_URL = (os.environ.get("API_BASE_URL") or "").strip()
+
+
+def post_json(url: str, headers: dict, body: dict, timeout: int = 60) -> dict:
+    """Gửi POST JSON bằng thư viện chuẩn (urllib), trả về dict phản hồi."""
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(body).encode("utf-8"),
+        method="POST",
+        headers=dict({"Content-Type": "application/json"}, **headers),
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raise RuntimeError("HTTP %d: %s" % (e.code, e.read().decode("utf-8", "replace")[:300]))
+    if SHOW_RAW:
+        print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
+    return data
+
+
+def _call_openai(system: str, user: str) -> dict:
+    url = API_BASE_URL or "https://api.openai.com/v1/chat/completions"
+    messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
+    data = post_json(
+        url,
+        {"Authorization": "Bearer " + API_KEY},
+        {"model": MODEL_NAME, "messages": messages},
+    )
+    usage = data["usage"]
+    return {
+        "text": data["choices"][0]["message"]["content"] or "",
+        "tokens_in": usage["prompt_tokens"],
+        "tokens_out": usage["completion_tokens"],
+    }
+
+
+def _call_claude(system: str, user: str) -> dict:
+    url = API_BASE_URL or "https://api.anthropic.com/v1/messages"
+    data = post_json(
+        url,
+        {"x-api-key": API_KEY, "anthropic-version": "2023-06-01"},
+        {
+            "model": MODEL_NAME,
+            "max_tokens": 1024,
+            "system": system or "",
+            "messages": [{"role": "user", "content": user}],
+        },
+    )
+    text = "".join(b.get("text", "") for b in data.get("content", []) if b.get("type") == "text")
+    usage = data["usage"]
+    return {
+        "text": text,
+        "tokens_in": usage["input_tokens"],
+        "tokens_out": usage["output_tokens"],
+    }
+
+
+def _call_gemini(system: str, user: str) -> dict:
+    base = API_BASE_URL or f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent"
+    sep = "&" if "?" in base else "?"
+    url = f"{base}{sep}key={urllib.parse.quote(API_KEY)}"
+    body = {"contents": [{"role": "user", "parts": [{"text": user}]}]}
+    if system:
+        body["systemInstruction"] = {"parts": [{"text": system}]}
+    data = post_json(url, {}, body)
+    candidates = data.get("candidates") or []
+    parts = (candidates[0].get("content") or {}).get("parts", []) if candidates else []
+    text = "".join(p.get("text", "") for p in parts if isinstance(p, dict))
+    usage = data.get("usageMetadata") or {}
+    tokens_in = int(usage.get("promptTokenCount", 0))
+    tokens_out = int(usage.get("candidatesTokenCount", 0)) + int(usage.get("thoughtsTokenCount", 0))
+    return {
+        "text": text,
+        "tokens_in": tokens_in,
+        "tokens_out": tokens_out,
+    }
+
+
+def _call_ollama(system: str, user: str) -> dict:
+    url = API_BASE_URL or "http://localhost:11434/api/chat"
+    messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
+    data = post_json(url, {}, {"model": MODEL_NAME, "messages": messages, "stream": False}, timeout=300)
+    return {
+        "text": data["message"]["content"] or "",
+        "tokens_in": data.get("prompt_eval_count", 0),
+        "tokens_out": data.get("eval_count", 0),
+    }
 
 
 @model_call
@@ -49,8 +142,28 @@ def call_model(system: str, user: str) -> dict:
         last = (user.strip().splitlines() or [""])[-1]
         return {"text": "[câu trả lời giả — chưa nối model] " + last[:60], "model": "fake", "tokens_in": 0, "tokens_out": 0}
 
-    # NHÓM VIẾT: gọi model thật ở đây (theo MODEL_PROVIDER, MODEL_NAME, API_KEY) rồi trả đúng 4 khoá.
-    # Ví dụ chép được cho từng nhà cung cấp: docs/connect-model.md mục 2.
-    raise NotImplementedError(
-        "chưa viết phần gọi model thật cho MODEL_PROVIDER=%s trong codebase/ai.py — xem docs/connect-model.md"
-        % MODEL_PROVIDER)
+    if not MODEL_NAME:
+        raise RuntimeError("Thiếu MODEL_NAME trong file .env")
+    if MODEL_PROVIDER != "ollama" and not API_KEY:
+        raise RuntimeError("Thiếu API_KEY trong file .env cho MODEL_PROVIDER=%s" % MODEL_PROVIDER)
+
+    if MODEL_PROVIDER in ("openai", "openai_compatible"):
+        r = _call_openai(system, user)
+    elif MODEL_PROVIDER in ("anthropic", "claude"):
+        r = _call_claude(system, user)
+    elif MODEL_PROVIDER in ("gemini", "google"):
+        r = _call_gemini(system, user)
+    elif MODEL_PROVIDER == "ollama":
+        r = _call_ollama(system, user)
+    else:
+        raise NotImplementedError(
+            "Không hỗ trợ MODEL_PROVIDER=%s trong codebase/ai.py (hỗ trợ: openai, anthropic, gemini, ollama)"
+            % MODEL_PROVIDER
+        )
+
+    return {
+        "text": r["text"],
+        "model": MODEL_NAME,
+        "tokens_in": int(r["tokens_in"]),
+        "tokens_out": int(r["tokens_out"]),
+    }
