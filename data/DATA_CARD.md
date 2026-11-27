@@ -13,7 +13,7 @@
 | Số dòng | 30 đơn, 4 quán dựng ("Quán Mẫu …"), khách K01–K30 |
 | Phiên bản / ngày | mock-2026-11-27 |
 | Nhãn | `synthetic` |
-| Giới hạn | giá và món đặt theo mức phổ biến ở TP.HCM do nhóm ước lượng; không có đơn nhiều quán, không có topping; giờ giao chỉ là số phút so với giờ hẹn |
+| Giới hạn | giá và món đặt theo mức phổ biến ở TP.HCM do nhóm ước lượng; không có đơn nhiều quán, không có topping; giờ hẹn và giờ giao tính bằng phút từ lúc đặt. 30 đơn thuộc 21 mã khách. Đơn có giá và số lượng từng món, nhưng chưa có số tiền thực trả từng món sau giảm giá. |
 
 ## Dataset 2 · Chính sách bồi thường dựng (`data/mock/policy.json`)
 
@@ -24,7 +24,7 @@
 | Nội dung | thiếu món / sai món: hoàn giá món theo đơn, tự xử lý tối đa 200.000đ · trễ quá 30 phút: voucher 50.000đ · chuyển người khi vượt mức, ≥3 khiếu nại/30 ngày, nghi ngộ độc / dị ứng, khách đòi gặp nhân viên |
 | Nhãn | `synthetic` |
 | Nguồn từng luật | trễ quá 30 phút → voucher 50.000đ: theo ví dụ "chính sách dựng" trong đề Track D (tình huống khó của D1) · hoàn đúng giá món thiếu / sai, vượt hạn mức thì chuyển người, ngộ độc / dị ứng / dị vật thì chuyển người ngay, không đưa số điện thoại: theo phần tình huống khó và An toàn của đề Track D · **hạn mức tự xử lý 200.000đ và ngưỡng ≥3 khiếu nại / 30 ngày (viết cứng trong `codebase/agent.py`): nhóm tự đặt *(tự ước tính)***. Đối chiếu thực tế: ShopeeFood yêu cầu ảnh đơn thực nhận để xem xét bồi hoàn, điều khoản Grab có liệt kê thiếu món trong các trường hợp được hoàn (`spec.md` §3); không hãng nào công bố hạn mức bằng số |
-| Giới hạn | ngưỡng 200.000đ, 30 phút, 50.000đ là số dựng để thử; chưa có luật cho đơn bị huỷ, hoàn phí ship |
+| Giới hạn | ngưỡng 200.000đ, 30 phút, 50.000đ là số dựng để thử; chưa có luật cho đơn bị huỷ, hoàn phí ship. A103 trễ 29 phút, A104 trễ 45 phút. Tập đơn chưa có ca trễ đúng 30 phút để kiểm ranh giới giữa xin lỗi và cấp voucher. |
 
 ## Dataset 3 · Lịch sử khiếu nại giả (`data/mock/complaints.json`)
 
@@ -34,6 +34,7 @@
 | Từ đâu | sinh bằng `data/make_mock_data.py`, seed 15 |
 | Số dòng | 9 khiếu nại; khách K05 có 5 lần trong tháng 11 để thử ca "khiếu nại nhiều lần" |
 | Nhãn | `synthetic` |
+| Giới hạn | K05 có 5 khiếu nại trong 30 ngày. Tập lịch sử chưa có khách với đúng 2 hoặc 3 lần để kiểm hai phía của ngưỡng chuyển nhân viên. [Đối chiếu dữ liệu](../docs/ra-soat-data-d1.md) |
 
 ## Dataset 4 · Review công khai Google Play (bằng chứng, không dùng cho bản chạy thử)
 
