@@ -1,4 +1,48 @@
-# BBShark · Phân công CP2 (hạn 19:30 Thứ Sáu 27/11)
+# BBShark · Phân công CP3 (hạn 10:00 Thứ Bảy 28/11)
+
+> CP2 đã nộp 19:30 Thứ Sáu 27/11. **Từ giờ KHÔNG sửa `spec.md` §7 và `eval/metric_spec.yaml`** (sửa → khối đánh giá 0 điểm).
+> Không sửa đáp án (`expected`) của câu thử đã có. Thêm câu mới thì được, ghi vào changelog `spec.md` §10.
+> Không sửa `data/mock/` hay luật trong `policy.json` (đáp án câu thử dựa vào đó). Sửa `data/` hoặc `codebase/` xong → chạy `python eval/check_decisions.py`, phải ra 0 câu trượt.
+> Mỗi việc: tạo nhánh mới từ `main` → commit → push → pull request. Khánh merge.
+
+**CP3 cần:** bằng chứng đạt ngưỡng ≥1 nguồn · 20–30 câu thử (đã có 27) · **video 30 giây gọi AI thật** · kết quả lượt 1.
+**Không có video gọi AI thật → không được xét giải.**
+
+## Hồ An Lộc · nối model thật, lượt 1, video (VIỆC GẤP NHẤT)
+
+1. Lấy API key (Gemini / OpenRouter / Groq, gói miễn phí). `copy .env.example .env`, điền `MODEL_PROVIDER`, `MODEL_NAME`, `API_KEY`. **Không commit `.env`, không để lộ key trong video.**
+2. `python run.py eval --try` → thấy 3 câu chạy với model thật.
+3. **Lượt 1:** `python run.py eval` → `eval/run-1.csv` + `traces/run-1.jsonl`, rồi `python eval/grade.py eval/run-1.csv` và `python run.py score eval/run-1.csv`.
+   Commit cả `eval/run-1.csv` và `traces/run-1.jsonl` (bắt buộc nộp). Không chạy lại lượt 1 để lấy kết quả đẹp hơn.
+4. **Video 30 giây:** chạy `python run.py`, gõ 2–3 tin nhắn (vd `đơn #A101 thiếu 1 ly trà sữa`, `don #A115 thieu 1 ly tra dao cam sa`, một câu tấn công), thấy câu trả lời thật + dòng `(model: … · token …)`. Để link video (Drive / YouTube không công khai) vào `eval/README.md`.
+5. Hạn: tối nay. Kẹt key thì báo nhóm ngay.
+
+## Đoàn Công Hải · bằng chứng từ người dùng
+
+1. **Gửi form khảo sát** (bản đề xuất 11 câu, 4 phần, có chuyển phần) lên Discord lớp / nhờ các nhóm khác điền. Mục tiêu **≥20 người ngoài nhóm**, chốt 9:00 sáng mai.
+   Xuất CSV từ Google Forms → gửi Khánh (hoặc lưu `evidence/survey/raw-responses.csv`; file `raw-*` không được commit).
+2. **Gán nhãn tay dòng 1–50** trong `evidence/label_sample.csv`: tự đọc, **không dùng AI**, không mở `evidence/labels/khanh.csv` trước khi xong. Cột `label`: `co` / `khong` / `khong_ro` theo định nghĩa trong `evidence/data-mining.md` §1. Cột `nguoi_gan`: `Hai`.
+3. **Phỏng vấn 3 người ngoài nhóm** về lần đơn đồ ăn gặp trục trặc **trong 1 tháng qua**: đã làm gì, nhắn ai, mất bao lâu, kết quả. Mỗi người một file `evidence/interviews/P1.md`… theo `TEMPLATE.md`, không ghi tên, có ít nhất 1 câu nguyên văn.
+   Mẹo: mời người đã điền khảo sát và chọn "trong 1 tuần" / "1–4 tuần".
+4. Hạn: nhãn tối nay; khảo sát và phỏng vấn trước 9:00 sáng mai.
+
+## Nguyễn Quốc Quang Anh · chi phí, hỗ trợ phỏng vấn
+
+1. `python run.py simulate --try` (10 phiên) để kiểm `cost/personas.yaml` chạy được. Bản đầy đủ (`python run.py simulate`) để sau khi có model thật và lượt 1 (CP4).
+2. Hỗ trợ Hải phỏng vấn 1–2 người (cùng mẫu `evidence/interviews/TEMPLATE.md`).
+3. Ghi góp ý về data giả / luật vào mục "Giới hạn" trong `data/DATA_CARD.md` (không sửa file JSON).
+
+## Lê Ngọc Khánh (đội trưởng) · tổng hợp và nộp
+
+1. Merge PR của mọi người; nhắc tiến độ lúc 22:00 tối nay và 8:30 sáng mai.
+2. Khi có nhãn của Hải + CSV khảo sát: đếm theo cách đã ghi trước, viết `evidence/summary.md`.
+3. Cập nhật số mới vào `canvas.md` dòng 4 và `spec.md` §1, §2 (thay số *tự ước tính* bằng số khảo sát nếu có).
+4. Điền kết quả lượt 1 vào `spec.md` §7 dòng "Kết quả" (chỉ dòng này) và `eval/README.md`.
+5. Nộp form CP3 trước 10:00.
+
+---
+
+# (Đã xong) Phân công CP2 (hạn 19:30 Thứ Sáu 27/11)
 
 > Đề tài: **D1 · Khiếu nại đơn giao đồ ăn** (Track D). Bản đề xuất đầy đủ: xem canvas.md và spec.md.
 > Làm xong phần nào thì commit + push phần đó (`git pull` trước khi push để không đè việc của nhau).
