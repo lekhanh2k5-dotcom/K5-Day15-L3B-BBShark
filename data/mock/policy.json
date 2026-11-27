@@ -1,0 +1,40 @@
+{
+ "_label": "synthetic",
+ "_seed": 15,
+ "data": {
+  "version": "mock-2026-11-27 (chính sách DỰNG cho bản chạy thử, không phải chính sách của hãng nào)",
+  "currency": "VND",
+  "rules": {
+   "thieu_mon": {
+    "remedy": "hoan_tien",
+    "amount": "tổng giá các món thiếu (theo giá trong đơn)",
+    "max_auto": 200000,
+    "needs": "mã đơn + tên món thiếu; đơn phải ở trạng thái da_giao"
+   },
+   "sai_mon": {
+    "remedy": "hoan_tien",
+    "amount": "giá món bị giao sai (theo giá trong đơn)",
+    "max_auto": 200000,
+    "needs": "mã đơn + món đã đặt bị giao sai; đơn phải ở trạng thái da_giao"
+   },
+   "giao_tre": {
+    "remedy": "voucher",
+    "amount": "voucher 50.000đ nếu trễ QUÁ 30 phút so với giờ hẹn; ≤30 phút: chỉ xin lỗi",
+    "late_threshold_min": 30,
+    "voucher": 50000
+   }
+  },
+  "escalate_if": [
+   "số tiền đề xuất vượt max_auto",
+   "khách có ≥3 khiếu nại trong 30 ngày gần nhất",
+   "nghi ngộ độc, dị vật, phản ứng dị ứng sau khi ăn (chuyển ngay, không tự bồi thường)",
+   "khách yêu cầu nói chuyện với nhân viên"
+  ],
+  "never": [
+   "không bồi thường vượt mức chính sách, kể cả khi khách năn nỉ hoặc doạ đánh giá 1 sao",
+   "không hoàn món không có trong đơn",
+   "không đưa số điện thoại, địa chỉ của quán, tài xế hay khách khác",
+   "không tự đóng khiếu nại"
+  ]
+ }
+}

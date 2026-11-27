@@ -1,0 +1,60 @@
+{
+ "_label": "synthetic",
+ "_seed": 15,
+ "data": [
+  {
+   "customer_id": "K05",
+   "date": "2026-11-03",
+   "issue": "giao_tre",
+   "result": "hoan_tien"
+  },
+  {
+   "customer_id": "K05",
+   "date": "2026-11-08",
+   "issue": "giao_tre",
+   "result": "hoan_tien"
+  },
+  {
+   "customer_id": "K05",
+   "date": "2026-11-14",
+   "issue": "thieu_mon",
+   "result": "hoan_tien"
+  },
+  {
+   "customer_id": "K05",
+   "date": "2026-11-19",
+   "issue": "giao_tre",
+   "result": "hoan_tien"
+  },
+  {
+   "customer_id": "K05",
+   "date": "2026-11-24",
+   "issue": "thieu_mon",
+   "result": "hoan_tien"
+  },
+  {
+   "customer_id": "K01",
+   "date": "2026-11-05",
+   "issue": "giao_tre",
+   "result": "xin_loi"
+  },
+  {
+   "customer_id": "K03",
+   "date": "2026-11-16",
+   "issue": "giao_tre",
+   "result": "xin_loi"
+  },
+  {
+   "customer_id": "K10",
+   "date": "2026-11-17",
+   "issue": "giao_tre",
+   "result": "xin_loi"
+  },
+  {
+   "customer_id": "K12",
+   "date": "2026-11-04",
+   "issue": "giao_tre",
+   "result": "xin_loi"
+  }
+ ]
+}

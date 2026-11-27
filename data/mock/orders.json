@@ -1,0 +1,671 @@
+{
+ "_label": "synthetic",
+ "_seed": 15,
+ "data": [
+  {
+   "order_id": "A101",
+   "customer_id": "K01",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà sữa trân châu",
+     1,
+     35000
+    ],
+    [
+     "Trà đào cam sả",
+     1,
+     40000
+    ],
+    [
+     "Bánh flan",
+     1,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T11:30",
+   "promised_min": 30,
+   "delivered_min": 32
+  },
+  {
+   "order_id": "A102",
+   "customer_id": "K02",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bún bò đặc biệt",
+     4,
+     65000
+    ],
+    [
+     "Bún bò Huế",
+     4,
+     50000
+    ],
+    [
+     "Chả cua thêm",
+     1,
+     15000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-27T11:45",
+   "promised_min": 35,
+   "delivered_min": 40
+  },
+  {
+   "order_id": "A103",
+   "customer_id": "K03",
+   "restaurant": "Quán Mẫu Cơm Tấm",
+   "status": "da_giao",
+   "items": [
+    [
+     "Cơm tấm sườn",
+     2,
+     45000
+    ],
+    [
+     "Trà đá",
+     2,
+     5000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T12:00",
+   "promised_min": 30,
+   "delivered_min": 59
+  },
+  {
+   "order_id": "A104",
+   "customer_id": "K04",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Combo gà rán 2 miếng",
+     1,
+     89000
+    ],
+    [
+     "Pepsi",
+     1,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T18:00",
+   "promised_min": 30,
+   "delivered_min": 75
+  },
+  {
+   "order_id": "A105",
+   "customer_id": "K05",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà sữa trân châu",
+     2,
+     35000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T15:00",
+   "promised_min": 30,
+   "delivered_min": 28
+  },
+  {
+   "order_id": "A106",
+   "customer_id": "K06",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà sữa trân châu",
+     1,
+     35000
+    ],
+    [
+     "Bánh flan",
+     2,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T16:00",
+   "promised_min": 30,
+   "delivered_min": 25
+  },
+  {
+   "order_id": "A107",
+   "customer_id": "K07",
+   "restaurant": "Quán Mẫu Cơm Tấm",
+   "status": "dang_giao",
+   "items": [
+    [
+     "Cơm tấm sườn bì chả",
+     1,
+     55000
+    ],
+    [
+     "Canh chua",
+     1,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T19:00",
+   "promised_min": 30,
+   "delivered_min": null
+  },
+  {
+   "order_id": "A108",
+   "customer_id": "K08",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Combo gà rán 2 miếng",
+     3,
+     89000
+    ],
+    [
+     "Khoai tây chiên",
+     2,
+     25000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-27T19:30",
+   "promised_min": 30,
+   "delivered_min": 30
+  },
+  {
+   "order_id": "A109",
+   "customer_id": "K09",
+   "restaurant": "Quán Mẫu Cơm Tấm",
+   "status": "da_giao",
+   "items": [
+    [
+     "Cơm tấm sườn",
+     1,
+     45000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-22T15:15",
+   "promised_min": 25,
+   "delivered_min": 20
+  },
+  {
+   "order_id": "A110",
+   "customer_id": "K20",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Pepsi",
+     2,
+     15000
+    ],
+    [
+     "Khoai tây chiên",
+     2,
+     25000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-23T15:30",
+   "promised_min": 30,
+   "delivered_min": 29
+  },
+  {
+   "order_id": "A111",
+   "customer_id": "K23",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Pepsi",
+     2,
+     15000
+    ],
+    [
+     "Khoai tây chiên",
+     2,
+     25000
+    ],
+    [
+     "Combo gà rán 2 miếng",
+     2,
+     89000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-25T17:30",
+   "promised_min": 25,
+   "delivered_min": 39
+  },
+  {
+   "order_id": "A112",
+   "customer_id": "K26",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà sữa trân châu",
+     1,
+     35000
+    ],
+    [
+     "Trà đào cam sả",
+     1,
+     40000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-20T14:45",
+   "promised_min": 25,
+   "delivered_min": 21
+  },
+  {
+   "order_id": "A113",
+   "customer_id": "K23",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bún bò đặc biệt",
+     1,
+     65000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-24T16:15",
+   "promised_min": 25,
+   "delivered_min": 22
+  },
+  {
+   "order_id": "A114",
+   "customer_id": "K14",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Combo gà rán 2 miếng",
+     2,
+     89000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-25T16:45",
+   "promised_min": 30,
+   "delivered_min": 32
+  },
+  {
+   "order_id": "A115",
+   "customer_id": "K12",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà đào cam sả",
+     2,
+     40000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-27T16:45",
+   "promised_min": 25,
+   "delivered_min": 17
+  },
+  {
+   "order_id": "A116",
+   "customer_id": "K14",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Combo gà rán 2 miếng",
+     1,
+     89000
+    ],
+    [
+     "Khoai tây chiên",
+     2,
+     25000
+    ],
+    [
+     "Pepsi",
+     1,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-27T17:00",
+   "promised_min": 30,
+   "delivered_min": 38
+  },
+  {
+   "order_id": "A117",
+   "customer_id": "K17",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bún bò Huế",
+     1,
+     50000
+    ],
+    [
+     "Bún bò đặc biệt",
+     2,
+     65000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-21T19:00",
+   "promised_min": 35,
+   "delivered_min": 28
+  },
+  {
+   "order_id": "A118",
+   "customer_id": "K26",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Khoai tây chiên",
+     1,
+     25000
+    ],
+    [
+     "Pepsi",
+     2,
+     15000
+    ],
+    [
+     "Combo gà rán 2 miếng",
+     2,
+     89000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-26T16:00",
+   "promised_min": 30,
+   "delivered_min": 50
+  },
+  {
+   "order_id": "A119",
+   "customer_id": "K19",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Khoai tây chiên",
+     2,
+     25000
+    ],
+    [
+     "Combo gà rán 2 miếng",
+     1,
+     89000
+    ],
+    [
+     "Pepsi",
+     2,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-23T20:30",
+   "promised_min": 35,
+   "delivered_min": 42
+  },
+  {
+   "order_id": "A120",
+   "customer_id": "K16",
+   "restaurant": "Quán Mẫu Gà Rán",
+   "status": "da_giao",
+   "items": [
+    [
+     "Pepsi",
+     2,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-20T12:00",
+   "promised_min": 35,
+   "delivered_min": 53
+  },
+  {
+   "order_id": "A121",
+   "customer_id": "K23",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà sữa trân châu",
+     1,
+     35000
+    ],
+    [
+     "Trà đào cam sả",
+     2,
+     40000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-27T19:00",
+   "promised_min": 30,
+   "delivered_min": 34
+  },
+  {
+   "order_id": "A122",
+   "customer_id": "K29",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bún bò Huế",
+     2,
+     50000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-25T15:45",
+   "promised_min": 25,
+   "delivered_min": 24
+  },
+  {
+   "order_id": "A123",
+   "customer_id": "K17",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Chả cua thêm",
+     2,
+     15000
+    ],
+    [
+     "Bún bò đặc biệt",
+     2,
+     65000
+    ],
+    [
+     "Bún bò Huế",
+     2,
+     50000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-22T14:30",
+   "promised_min": 25,
+   "delivered_min": 22
+  },
+  {
+   "order_id": "A124",
+   "customer_id": "K17",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Chả cua thêm",
+     1,
+     15000
+    ],
+    [
+     "Bún bò Huế",
+     1,
+     50000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-21T17:15",
+   "promised_min": 35,
+   "delivered_min": 55
+  },
+  {
+   "order_id": "A125",
+   "customer_id": "K16",
+   "restaurant": "Quán Mẫu Cơm Tấm",
+   "status": "da_giao",
+   "items": [
+    [
+     "Cơm tấm sườn bì chả",
+     1,
+     55000
+    ],
+    [
+     "Canh chua",
+     2,
+     15000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-22T15:15",
+   "promised_min": 30,
+   "delivered_min": 38
+  },
+  {
+   "order_id": "A126",
+   "customer_id": "K11",
+   "restaurant": "Quán Mẫu Cơm Tấm",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà đá",
+     2,
+     5000
+    ],
+    [
+     "Cơm tấm sườn bì chả",
+     1,
+     55000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-24T17:15",
+   "promised_min": 30,
+   "delivered_min": 43
+  },
+  {
+   "order_id": "A127",
+   "customer_id": "K27",
+   "restaurant": "Quán Mẫu Bún Bò",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bún bò đặc biệt",
+     1,
+     65000
+    ],
+    [
+     "Chả cua thêm",
+     1,
+     15000
+    ]
+   ],
+   "ship_fee": 12000,
+   "ordered_at": "2026-11-27T17:00",
+   "promised_min": 35,
+   "delivered_min": 37
+  },
+  {
+   "order_id": "A128",
+   "customer_id": "K21",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bánh flan",
+     2,
+     15000
+    ],
+    [
+     "Trà đào cam sả",
+     2,
+     40000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-21T12:30",
+   "promised_min": 30,
+   "delivered_min": 36
+  },
+  {
+   "order_id": "A129",
+   "customer_id": "K14",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Bánh flan",
+     1,
+     15000
+    ],
+    [
+     "Trà đào cam sả",
+     1,
+     40000
+    ]
+   ],
+   "ship_fee": 20000,
+   "ordered_at": "2026-11-26T20:00",
+   "promised_min": 25,
+   "delivered_min": 39
+  },
+  {
+   "order_id": "A130",
+   "customer_id": "K12",
+   "restaurant": "Quán Mẫu Trà Sữa",
+   "status": "da_giao",
+   "items": [
+    [
+     "Trà đào cam sả",
+     2,
+     40000
+    ],
+    [
+     "Bánh flan",
+     1,
+     15000
+    ],
+    [
+     "Trà sữa trân châu",
+     2,
+     35000
+    ]
+   ],
+   "ship_fee": 15000,
+   "ordered_at": "2026-11-23T14:15",
+   "promised_min": 30,
+   "delivered_min": 40
+  }
+ ]
+}

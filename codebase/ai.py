@@ -167,3 +167,64 @@ def call_model(system: str, user: str) -> dict:
         "tokens_in": int(r["tokens_in"]),
         "tokens_out": int(r["tokens_out"]),
     }
+    if not API_KEY or not MODEL_NAME:
+        raise NotImplementedError("điền MODEL_NAME và API_KEY trong .env (xem .env.example)")
+    if MODEL_PROVIDER == "gemini":
+        r = call_gemini(system, user)
+    elif MODEL_PROVIDER in OPENAI_COMPATIBLE:
+        r = call_openai_compatible(OPENAI_COMPATIBLE[MODEL_PROVIDER], system, user)
+    else:
+        raise NotImplementedError(
+            "MODEL_PROVIDER=%s chưa hỗ trợ — dùng một trong: gemini, %s" % (MODEL_PROVIDER, ", ".join(OPENAI_COMPATIBLE)))
+    return {"text": r["text"], "model": MODEL_NAME, "tokens_in": int(r["tokens_in"]), "tokens_out": int(r["tokens_out"])}
+
+
+# ---- Gọi API bằng thư viện chuẩn (urllib), không cần cài SDK ----
+SHOW_RAW = False   # True: in nguyên phản hồi API khi cần tìm tên trường
+TEMPERATURE = 0    # 0 để kết quả chạy lại ổn định nhất có thể
+
+OPENAI_COMPATIBLE = {
+    "openrouter": "https://openrouter.ai/api/v1/chat/completions",
+    "openai": "https://api.openai.com/v1/chat/completions",
+    "groq": "https://api.groq.com/openai/v1/chat/completions",
+}
+
+
+def post_json(url, headers, body, timeout=60):
+    """Gửi POST JSON, trả về JSON phản hồi."""
+    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), method="POST",
+                                 headers=dict({"Content-Type": "application/json"}, **headers))
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raise RuntimeError("HTTP %d: %s" % (e.code, e.read().decode("utf-8", "replace")[:300]))
+    if SHOW_RAW:
+        print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
+    return data
+
+
+def call_openai_compatible(url, system, user):
+    """OpenRouter / OpenAI / Groq (cùng chuẩn chat completions). Token lấy từ trường usage."""
+    data = post_json(url, {"Authorization": "Bearer " + API_KEY}, {
+        "model": MODEL_NAME, "temperature": TEMPERATURE,
+        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
+    })
+    usage = data.get("usage") or {}
+    return {"text": data["choices"][0]["message"]["content"] or "",
+            "tokens_in": usage.get("prompt_tokens", 0), "tokens_out": usage.get("completion_tokens", 0)}
+
+
+def call_gemini(system, user):
+    """Google Gemini (generativelanguage API). Token lấy từ usageMetadata (gồm cả token suy nghĩ nếu có)."""
+    url = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent" % MODEL_NAME
+    data = post_json(url, {"x-goog-api-key": API_KEY}, {
+        "systemInstruction": {"parts": [{"text": system}]},
+        "contents": [{"role": "user", "parts": [{"text": user}]}],
+        "generationConfig": {"temperature": TEMPERATURE},
+    })
+    parts = ((data.get("candidates") or [{}])[0].get("content") or {}).get("parts") or []
+    meta = data.get("usageMetadata") or {}
+    return {"text": "".join(p.get("text", "") for p in parts),
+            "tokens_in": meta.get("promptTokenCount", 0),
+            "tokens_out": meta.get("candidatesTokenCount", 0) + meta.get("thoughtsTokenCount", 0)}
