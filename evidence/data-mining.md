@@ -1,40 +1,54 @@
-# Đào data — cách đếm và kết quả
-
-> Điền ở guide bước 1.2. Ôn lại: ngày 2, ngày 6 · lab ngày 2, lab ngày 6.
-> Không đào data thì xoá file này. Script / công thức đếm để trong repo (vd `evidence/count.py` hoặc ghi công thức Sheets ngay dưới), người khác chạy lại phải ra cùng số.
-> Repo chỉ chứa số đã tổng hợp và vài dòng ví dụ — không chép lại nguyên file data.
+# Đào data — review công khai Google Play về sự cố đơn giao đồ ăn
 
 ## 1. Cách đếm — viết TRƯỚC khi chạy
 
-- Data dùng: __ (file nào, từ ngày nào đến ngày nào)
-- Đếm gì: __ · trên tập nào: __ · lọc gì: __
-- **Mẫu số là gì:** __ *(lỗi hay gặp nhất là mẫu số sai)*
-- Script / công thức: __
+- **Data dùng:** review công khai trên Google Play (ngôn ngữ vi, quốc gia vn), sắp xếp mới nhất, tải ngày 27/11/2026:
+  ShopeeFood (`com.deliverynow`) 10.000 review · Grab (`com.grabtaxi.passenger`), be (`xyz.be.customer`), Xanh SM (`com.gsm.customer`) mỗi app 3.000 review.
+- **Đếm gì, trên tập nào, lọc gì:**
+  1. `food`: review có nhắc đồ ăn / món / quán / đơn hàng (regex `FOOD` trong script).
+  2. `food_issue`: trong số đó, review có nhắc một sự cố hoặc việc xử lý khiếu nại (thiếu, sai món, trễ, nguội, hoàn tiền, khiếu nại, huỷ đơn, hỗ trợ, tổng đài, chatbot…; regex `ISSUE`).
+  3. `thieu_sai_mon` (đếm chặt, đúng lát cắt D1): review nói đơn bị thiếu món / sai món (regex `STRICT`).
+  4. **Gán nhãn tay:** rút ngẫu nhiên 100 review trong tập `food_issue` của ShopeeFood (seed 42). Mỗi review trả lời một câu:
+     *"Review này có kể chuyện đơn đồ ăn gặp sự cố mà khiếu nại không được xử lý thỏa đáng không?"* → `co` / `khong` / `khong_ro`.
+     Hai người gán (Hải dòng 1–50, Khánh dòng 51–100); 10 dòng đầu cả hai cùng gán để đo độ khớp.
+- **Mẫu số:** N = số review đã tải của từng app (không phải số người dùng app). Với kết quả gán nhãn: mẫu số = 100 review đã rút.
+- **Script:** `evidence/scripts/scrape_reviews.py` → `evidence/review_counts.csv` (số đếm), `evidence/label_sample.csv` (mẫu gán nhãn).
 
 ## 2. Đọc trước, đếm sau
 
-Đã đọc __ dòng đầu và từ điển cột. Các *kiểu* hành vi thấy được (trước khi định nghĩa thứ cần đếm):
-- __
-- __
+Đã đọc khoảng 60 review đầu của mỗi app trước khi viết bộ lọc. Các kiểu nội dung thấy được:
+- Lỗi app: không đăng nhập được, không huỷ được đơn, bộ lọc khó dùng (không thuộc lát cắt).
+- Đơn có sự cố: giao thiếu món, sai món, giao trễ, đồ nguội, bị huỷ đơn.
+- Xử lý khiếu nại kém: chatbot vòng vo, không có tổng đài, chờ lâu, chậm hoàn tiền, bồi thường bằng voucher nhỏ.
+- Chuyện tài xế, phí ship, khuyến mãi (không thuộc lát cắt).
 
-## 3. Kết quả
+## 3. Kết quả (đếm bằng từ khoá, chạy ngày 27/11/2026)
 
-| Đếm gì | x / N | % | Ghi chú |
-|---|---|---|---|
-| | | | |
-| | | | |
+| App | N review | Nhắc đồ ăn/đơn | Đồ ăn + sự cố | % trên N | Thiếu / sai món (chặt) |
+|---|---:|---:|---:|---:|---:|
+| ShopeeFood | 10.000 | 2.587 | 779 | 7,8% | 39 |
+| Grab | 3.000 | 397 | 138 | 4,6% | 10 |
+| be | 3.000 | 429 | 192 | 6,4% | 9 |
+| Xanh SM | 3.000 | 201 | 89 | 3,0% | 6 |
+| **Cộng** | **19.000** | 3.614 | **1.198** | 6,3% | **64** |
 
-Ghi dạng "x/N (y%)". "Nhiều bạn…" không phải số.
+Trong 1.198 review "đồ ăn + sự cố", 1.127 review (94%) là 1–2★.
 
-## 4. ≥5 ví dụ cụ thể (mã dòng / mã đã ẩn danh, không đoán ai là ai)
+**Gán nhãn tay (đang làm, xong trước CP3):** x/100 review trong mẫu đúng là "khiếu nại không được xử lý thỏa đáng" → __%. Độ khớp giữa 2 người trên 10 dòng chung: __/10.
 
-1.
-2.
-3.
-4.
-5.
+## 4. ≥5 ví dụ cụ thể (nguyên văn, đã bỏ tên người viết)
+
+1. ShopeeFood, 1★: *"qua tệ shop làm thiếu món mà yêu cầu hỗ trợ thì load mãi kh trl"*
+2. ShopeeFood, 1★: *"giao sai đơn+ thiếu món là bên app hay quán giải quyết vậy.đã thanh toán qua shoppe pay r khi nào giải quyết v?!"*
+3. ShopeeFood, 1★: *"Quán làm sai món rồi vứt cho khách cái vorcher 15k ko bồi hoàn dc đơn hàng phải hơm 100k app làm ăn vậy à"*
+4. Grab, 1★: *"Không có tổng đài hỗ trợ cho GrabFood, gặp trục trặc không biết hỗ trợ ở đâu. Nhắn tin trên Chatbox xin hỗ trợ thì Chatb[ot]…"*
+5. ShopeeFood, 2★: *"những đơn gần đây đang có tình trạng giao thiếu món, không biết vì quán giao thiếu hay tài xế lấy, nên app cần rà soát lại quy trình để kiểm tra."*
+6. ShopeeFood, 1★: *"quán làm thiếu đồ nhưng shipper phải chịu hết trách nhiệm ???"* — cho thấy xử lý sai thì cả bên thứ ba cũng chịu thiệt.
 
 ## 5. Giới hạn của data
 
-Data cho biết người ta **làm gì**, không cho biết **vì sao**. Thiếu gì, lệch về phía nào: __
-→ Kiểm lại bằng phỏng vấn / khảo sát nào: __
+- Review cho biết người ta **gặp gì**, không cho biết **bao nhiêu người** gặp: N là số review, không phải số người dùng hay số đơn.
+- Lệch tiêu cực: người gặp chuyện bực mình mới viết review → không lấy % này làm tỉ lệ sự cố của mọi đơn.
+- Lọc từ khoá còn thô (vd "chậm" bắt cả app chạy chậm) → đang gán nhãn tay 100 review để đo bao nhiêu % thật sự đúng.
+- Chỉ Google Play, chưa có App Store.
+- → Kiểm lại bằng **phỏng vấn ≥3 người ngoài nhóm** (`evidence/interviews/`): lần gần nhất đơn có sự cố, mất bao lâu, được bồi thường gì.
