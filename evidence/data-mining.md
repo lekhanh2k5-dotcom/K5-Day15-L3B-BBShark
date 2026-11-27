@@ -16,6 +16,10 @@
      - `khong` (hoặc 2): thiếu một trong hai — chỉ kể sự cố mà không nhắc khiếu nại, hoặc nói chuyện khác (lỗi app, không cho huỷ, khuyến mãi, phí ship).
      - `khong_ro` (hoặc 3): quá mơ hồ để biết sự cố gì hoặc đã khiếu nại chưa. Phân vân giữa `co` và `khong` thì chọn `khong_ro`, ghi lý do ở `ghi_chu`.
      - Báo cáo: x = số `co`; ghi riêng số `khong_ro`, không cộng vào x.
+     - **Cách gán thực tế (khai rõ):** dòng 1–10 và 51–100 do **AI gán nhãn trước** (kèm lý do ở cột `ghi_chu`),
+       sau đó **Khánh đọc lại từng dòng và kiểm** (file `evidence/labels/khanh.csv`, cột `nguoi_gan` = "AI gán, Khánh kiểm").
+       Dòng 1–50 do **Hải gán tay, không dùng AI** (`evidence/label_sample.csv`).
+       Dòng 1–10 có cả hai bản → độ khớp giữa nhãn "AI + người kiểm" và nhãn người gán tay độc lập được báo ở mục 3.
 - **Mẫu số:** N = số review đã tải của từng app (không phải số người dùng app). Với kết quả gán nhãn: mẫu số = 100 review đã rút.
 - **Script:** `evidence/scripts/scrape_reviews.py` → `evidence/review_counts.csv` (số đếm), `evidence/label_sample.csv` (mẫu gán nhãn).
 
