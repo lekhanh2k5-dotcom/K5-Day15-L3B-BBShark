@@ -37,7 +37,7 @@ def main():
     fi = [r for r in rows if r["food_issue"] == "1"]
     food = sum(r["food"] == "1" for r in rows)
     strict = sum(r.get("thieu_sai_mon") == "1" for r in rows)
-    out += ["", "## 2. Phễu lọc", "", "| Bước | Số review | % trên %d |" % len(rows), "|---|---:|---:|",
+    out += ["", "## 2. Phễu lọc", "", "| Bước | Số review | %% trên %d |" % len(rows), "|---|---:|---:|",
             "| Nhắc đồ ăn / đơn hàng | %d | %.1f%% |" % (food, 100 * food / len(rows)),
             "| Đồ ăn + sự cố hoặc xử lý khiếu nại | %d | %.1f%% |" % (len(fi), 100 * len(fi) / len(rows)),
             "| … trong đó 1–2★ | %d | %.0f%% của %d |" % (sum(int(r["score"]) <= 2 for r in fi), 100 * sum(int(r["score"]) <= 2 for r in fi) / len(fi), len(fi)),
