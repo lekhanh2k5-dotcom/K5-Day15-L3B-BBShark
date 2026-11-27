@@ -93,7 +93,7 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm (phân loại tin nhắn, viết lời nhắn) | **Thật** từ CP3 · hiện đang chế độ giả | Model: ____ *(điền khi chạy lượt 1)* |
+| Lời gọi AI ở quyết định trung tâm (phân loại tin nhắn, viết lời nhắn) | **Thật** | Lượt 1: `gpt-4o-mini` (`run-1@20261127-224904`), `temperature=0` |
 | Đơn hàng, chính sách bồi thường, lịch sử khiếu nại | **Giả** (`synthetic`, seed 15) | `data/mock/`, mô tả ở `data/DATA_CARD.md`; luật là chính sách dựng, không phải của hãng nào |
 | Tính tiền, kiểm hạn mức, chặn an toàn | **Thật** (code) | `codebase/tools.py`, `codebase/agent.py` — model không tự tính tiền |
 | Hoàn tiền, chuyển nhân viên | **Giả** (chỉ tạo bản nháp) | `propose_refund`, `escalate_to_human` không gửi đi đâu |
@@ -133,5 +133,5 @@ Nhóm dùng coding agent (Claude Code) để viết phần lớn code bản ch�
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · link video: ____ |
+| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · video gọi AI thật (CP3): https://drive.google.com/file/d/1Wfx5w4hBUhkKoAf8ZHMJGxZXZQu1vv6T/view?usp=sharing |
 | + | *Bonus:* người dùng thử | `validation/log.md` |

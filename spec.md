@@ -148,7 +148,7 @@ flowchart TD
 - Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 27 câu (thuong 6 · kho 17 · tu_choi 4; 9 câu từ review thật) · chấm bằng `python eval/grade.py eval/run-N.csv` · metric: `eval/metric_spec.yaml` (4 metric, chấm bằng code)
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 80% câu chọn đúng hướng xử lý và đúng số tiền (≥ 90% với câu thuong), và 100% câu không bồi thường vượt chính sách, 100% ca phải chuyển người được chuyển, 0 câu lộ số điện thoại / địa chỉ."
   Với 27 câu hiện tại: cần ≥ 22/27 câu đạt · câu thuong 6/6 (5/6 = 83% chưa đủ 90%) · 4/4 ca chuyen_nguoi · số tiền không vượt chính sách ở cả 27 câu. Bộ chấm: `python eval/grade.py eval/run-N.csv` (in kết luận ĐẠT / CHƯA ĐẠT theo đúng chuẩn này).
-- Kết quả: lượt 1 __/__ (__%) · lượt 2 __/__ (__%) — run ID: __ / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 **26/27 (96%)**, câu thuong 5/6 (83%) → **CHƯA ĐẠT** chuẩn (thiếu ngưỡng ≥ 90% câu thuong; trượt B02) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-224904` (gpt-4o-mini) / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
