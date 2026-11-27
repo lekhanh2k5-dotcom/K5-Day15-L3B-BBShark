@@ -13,8 +13,8 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): không (tr
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
 - Người dùng chính (một vai cụ thể): người đặt đồ ăn qua app giao đồ ăn vừa nhận đơn thiếu món (hoặc sai món, giao trễ) và nhắn khiếu nại trong app.
 - Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI): nhận lại tiền cho món bị thiếu ngay trong khung chat hỗ trợ của app, khi vừa mở túi đồ ăn.
-- Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ: nhắn trợ lý chạy theo menu có sẵn hoặc chờ nhân viên; trợ lý không hiểu tin nhắn tự do, nhân viên phản hồi chậm, bồi thường không rõ căn cứ. Chưa bỏ app vì không có kênh nào khác để đòi lại tiền đơn đã trả. *(giả thuyết — kiểm lại bằng phỏng vấn, Hải)*
-- Pain (KHÔNG chữ AI): người đặt đồ ăn — nhắn khiếu nại vì đơn thiếu món — trợ lý trong app chạy theo menu cứng, chờ nhân viên lâu, không chắc được bồi thường đúng — mất tiền, mất thời gian, mất niềm tin; còn xử lý quá tay thì quán chịu thiệt.
+- Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ: nhắn trợ lý trong app hoặc chờ nhân viên. Trợ lý ShopeeFood ("Tép Thám Tử", kiểm trên app ngày 27/11/2026) đã cho gõ chat nhưng dặn "nhập ngắn gọn, có dấu, không viết tắt", nhận ra ý "giao sai/thiếu món" rồi đẩy về nút "Chọn đơn hàng" / hướng dẫn và form; tin nhắn kiểu ngoài đời (không dấu, viết tắt như review "load mãi kh trl") và ca không khớp luồng thì phải chờ nhân viên. Chưa bỏ app vì không có kênh nào khác để đòi lại tiền đơn đã trả. *(giả thuyết — kiểm lại bằng phỏng vấn, Hải)*
+- Pain (KHÔNG chữ AI): người đặt đồ ăn — nhắn khiếu nại vì đơn thiếu món — trợ lý trong app chỉ nhận tin ngắn, có dấu rồi đẩy về nút và form, chờ nhân viên lâu, không chắc được bồi thường đúng — mất tiền, mất thời gian, mất niềm tin; còn xử lý quá tay thì quán chịu thiệt.
 - Bằng chứng — số chính + kết luận (chi tiết: `evidence/data-mining.md`): trong 19.000 review Google Play mới nhất của 4 app giao đồ ăn (tải 27/11/2026), 1.198 review (6,3%) nhắc sự cố đơn đồ ăn hoặc việc xử lý khiếu nại, 94% trong đó là 1–2★; 64 review nói đúng chuyện thiếu/sai món. Đang gán nhãn tay 100 review và phỏng vấn 3 người để kiểm lại.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
@@ -102,7 +102,7 @@ flowchart TD
 - Bị đòi ngoài phạm vi (lớp 3): · Trường hợp đặc thù lĩnh vực (lớp 4):
 
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
-- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 25 câu (thuong 6 · kho 15 · tu_choi 4; 9 câu từ review thật) · chấm bằng `python eval/grade.py eval/run-N.csv` · metric: `eval/metric_spec.yaml` (4 metric, chấm bằng code)
+- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 27 câu (thuong 6 · kho 17 · tu_choi 4; 9 câu từ review thật) · chấm bằng `python eval/grade.py eval/run-N.csv` · metric: `eval/metric_spec.yaml` (4 metric, chấm bằng code)
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 80% câu chọn đúng hướng xử lý và đúng số tiền (≥ 90% với câu thuong), và 100% câu không bồi thường vượt chính sách, 100% ca phải chuyển người được chuyển, 0 câu lộ số điện thoại / địa chỉ."
 - Kết quả: lượt 1 __/__ (__%) · lượt 2 __/__ (__%) — run ID: __ / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
