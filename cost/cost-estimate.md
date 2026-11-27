@@ -6,11 +6,11 @@
 
 ## 1. Đầu vào
 
-- **Persona** (`cost/personas.yaml`): ≥3 kiểu — tỉ lệ, số phiên / người / tháng, số lượt hỏi / phiên. Nguồn: __
-- **Số người dùng thật** 3 kịch bản: thấp __ · cơ sở __ · cao __. Nguồn: __
-- **Giá** ≥2 mức model (từ `further-reading/model-prices.md` của repo đề, có link + ngày xem): __ · __
-- **Tỉ lệ đạt** dùng để tính: __/__ (__%) — lượt `run-__` (lượt 2)
-- Đo token trên model __, tính giá model __ và __
+Ba kiểu khách lần lượt chiếm 80%, 15% và 5%, dùng 1, 2 và 3 phiên/tháng. Số lượt hỏi mỗi phiên lần lượt là 1, 2 và 2. Ba kịch bản triển khai có 50, 100 và 200 khách dùng mỗi tháng *(tự ước tính)*. [Cấu hình](personas.yaml) · [Căn cứ kịch bản tại §2](../spec.md)
+
+Giá trả phí tiêu chuẩn, USD/triệu token văn bản vào và ra: Gemini 2.5 Flash-Lite 0,10 và 0,40; Gemini 2.5 Flash 0,30 và 2,50. Ngày tra 27/11/2026. [Bảng giá Google](https://ai.google.dev/gemini-api/docs/pricing)
+
+Mô phỏng dùng 50 phiên, seed 42. Model đo token và tỉ lệ đạt sẽ lấy từ lượt chạy thật và lượt 2 đã chấm.
 
 ## 2. Kết quả mô phỏng
 
@@ -27,7 +27,7 @@ Chi phí / task thành công = chi phí trung bình mỗi phiên ÷ tỉ lệ đ
 
 ## 3. So với impact
 
-- Impact / người / tháng (`spec.md` §2): __
+- Impact / người / tháng theo §2: 12,5 phút khách bỏ ra (tự ước tính). Thời gian tiết kiệm thực tế chưa đo.
 - Chi phí / người / tháng (cơ sở, model __): __
 - **Kết luận một dòng — đáng làm không:** __
 
