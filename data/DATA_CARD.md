@@ -23,6 +23,7 @@
 | Từ đâu | nhóm tự viết, tham khảo cách trình bày ở trang trợ giúp công khai của các app giao đồ ăn; **không phải chính sách của hãng nào** |
 | Nội dung | thiếu món / sai món: hoàn giá món theo đơn, tự xử lý tối đa 200.000đ · trễ quá 30 phút: voucher 50.000đ · chuyển người khi vượt mức, ≥3 khiếu nại/30 ngày, nghi ngộ độc / dị ứng, khách đòi gặp nhân viên |
 | Nhãn | `synthetic` |
+| Nguồn từng luật | trễ quá 30 phút → voucher 50.000đ: theo ví dụ "chính sách dựng" trong đề Track D (tình huống khó của D1) · hoàn đúng giá món thiếu / sai, vượt hạn mức thì chuyển người, ngộ độc / dị ứng / dị vật thì chuyển người ngay, không đưa số điện thoại: theo phần tình huống khó và An toàn của đề Track D · **hạn mức tự xử lý 200.000đ và ngưỡng ≥3 khiếu nại / 30 ngày (viết cứng trong `codebase/agent.py`): nhóm tự đặt *(tự ước tính)***. Đối chiếu thực tế: ShopeeFood yêu cầu ảnh đơn thực nhận để xem xét bồi hoàn, điều khoản Grab có liệt kê thiếu món trong các trường hợp được hoàn (`spec.md` §3); không hãng nào công bố hạn mức bằng số |
 | Giới hạn | ngưỡng 200.000đ, 30 phút, 50.000đ là số dựng để thử; chưa có luật cho đơn bị huỷ, hoàn phí ship |
 
 ## Dataset 3 · Lịch sử khiếu nại giả (`data/mock/complaints.json`)
