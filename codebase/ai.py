@@ -27,6 +27,14 @@ from tracing import model_call
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SHOW_RAW = False   # đổi thành True để in nguyên phản hồi API khi cần debug tên trường
+TEMPERATURE = 0    # 0 để kết quả chạy lại ổn định nhất có thể
+
+# Nhà cung cấp dùng chuẩn chat completions của OpenAI (cùng hàm _call_openai, khác địa chỉ)
+OPENAI_COMPATIBLE = {
+    "openai": "https://api.openai.com/v1/chat/completions",
+    "openrouter": "https://openrouter.ai/api/v1/chat/completions",
+    "groq": "https://api.groq.com/openai/v1/chat/completions",
+}
 
 
 def load_env(path=os.path.join(ROOT, ".env")):
@@ -67,13 +75,13 @@ def post_json(url: str, headers: dict, body: dict, timeout: int = 60) -> dict:
     return data
 
 
-def _call_openai(system: str, user: str) -> dict:
-    url = API_BASE_URL or "https://api.openai.com/v1/chat/completions"
+def _call_openai(system: str, user: str, url: str = "") -> dict:
+    url = API_BASE_URL or url or OPENAI_COMPATIBLE["openai"]
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
     data = post_json(
         url,
         {"Authorization": "Bearer " + API_KEY},
-        {"model": MODEL_NAME, "messages": messages},
+        {"model": MODEL_NAME, "messages": messages, "temperature": TEMPERATURE},
     )
     usage = data["usage"]
     return {
@@ -108,7 +116,7 @@ def _call_gemini(system: str, user: str) -> dict:
     base = API_BASE_URL or f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL_NAME}:generateContent"
     sep = "&" if "?" in base else "?"
     url = f"{base}{sep}key={urllib.parse.quote(API_KEY)}"
-    body = {"contents": [{"role": "user", "parts": [{"text": user}]}]}
+    body = {"contents": [{"role": "user", "parts": [{"text": user}]}], "generationConfig": {"temperature": TEMPERATURE}}
     if system:
         body["systemInstruction"] = {"parts": [{"text": system}]}
     data = post_json(url, {}, body)
@@ -147,7 +155,9 @@ def call_model(system: str, user: str) -> dict:
     if MODEL_PROVIDER != "ollama" and not API_KEY:
         raise RuntimeError("Thiếu API_KEY trong file .env cho MODEL_PROVIDER=%s" % MODEL_PROVIDER)
 
-    if MODEL_PROVIDER in ("openai", "openai_compatible"):
+    if MODEL_PROVIDER in OPENAI_COMPATIBLE:
+        r = _call_openai(system, user, OPENAI_COMPATIBLE[MODEL_PROVIDER])
+    elif MODEL_PROVIDER == "openai_compatible":
         r = _call_openai(system, user)
     elif MODEL_PROVIDER in ("anthropic", "claude"):
         r = _call_claude(system, user)
@@ -157,7 +167,7 @@ def call_model(system: str, user: str) -> dict:
         r = _call_ollama(system, user)
     else:
         raise NotImplementedError(
-            "Không hỗ trợ MODEL_PROVIDER=%s trong codebase/ai.py (hỗ trợ: openai, anthropic, gemini, ollama)"
+            "Không hỗ trợ MODEL_PROVIDER=%s trong codebase/ai.py (hỗ trợ: openai, openrouter, groq, openai_compatible, anthropic, gemini, ollama)"
             % MODEL_PROVIDER
         )
 
@@ -167,64 +177,3 @@ def call_model(system: str, user: str) -> dict:
         "tokens_in": int(r["tokens_in"]),
         "tokens_out": int(r["tokens_out"]),
     }
-    if not API_KEY or not MODEL_NAME:
-        raise NotImplementedError("điền MODEL_NAME và API_KEY trong .env (xem .env.example)")
-    if MODEL_PROVIDER == "gemini":
-        r = call_gemini(system, user)
-    elif MODEL_PROVIDER in OPENAI_COMPATIBLE:
-        r = call_openai_compatible(OPENAI_COMPATIBLE[MODEL_PROVIDER], system, user)
-    else:
-        raise NotImplementedError(
-            "MODEL_PROVIDER=%s chưa hỗ trợ — dùng một trong: gemini, %s" % (MODEL_PROVIDER, ", ".join(OPENAI_COMPATIBLE)))
-    return {"text": r["text"], "model": MODEL_NAME, "tokens_in": int(r["tokens_in"]), "tokens_out": int(r["tokens_out"])}
-
-
-# ---- Gọi API bằng thư viện chuẩn (urllib), không cần cài SDK ----
-SHOW_RAW = False   # True: in nguyên phản hồi API khi cần tìm tên trường
-TEMPERATURE = 0    # 0 để kết quả chạy lại ổn định nhất có thể
-
-OPENAI_COMPATIBLE = {
-    "openrouter": "https://openrouter.ai/api/v1/chat/completions",
-    "openai": "https://api.openai.com/v1/chat/completions",
-    "groq": "https://api.groq.com/openai/v1/chat/completions",
-}
-
-
-def post_json(url, headers, body, timeout=60):
-    """Gửi POST JSON, trả về JSON phản hồi."""
-    req = urllib.request.Request(url, data=json.dumps(body).encode("utf-8"), method="POST",
-                                 headers=dict({"Content-Type": "application/json"}, **headers))
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            data = json.loads(r.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        raise RuntimeError("HTTP %d: %s" % (e.code, e.read().decode("utf-8", "replace")[:300]))
-    if SHOW_RAW:
-        print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
-    return data
-
-
-def call_openai_compatible(url, system, user):
-    """OpenRouter / OpenAI / Groq (cùng chuẩn chat completions). Token lấy từ trường usage."""
-    data = post_json(url, {"Authorization": "Bearer " + API_KEY}, {
-        "model": MODEL_NAME, "temperature": TEMPERATURE,
-        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
-    })
-    usage = data.get("usage") or {}
-    return {"text": data["choices"][0]["message"]["content"] or "",
-            "tokens_in": usage.get("prompt_tokens", 0), "tokens_out": usage.get("completion_tokens", 0)}
-
-
-def call_gemini(system, user):
-    """Google Gemini (generativelanguage API). Token lấy từ usageMetadata (gồm cả token suy nghĩ nếu có)."""
-    url = "https://generativelanguage.googleapis.com/v1beta/models/%s:generateContent" % MODEL_NAME
-    data = post_json(url, {"x-goog-api-key": API_KEY}, {
-        "systemInstruction": {"parts": [{"text": system}]},
-        "contents": [{"role": "user", "parts": [{"text": user}]}],
-        "generationConfig": {"temperature": TEMPERATURE},
-    })
-    parts = ((data.get("candidates") or [{}])[0].get("content") or {}).get("parts") or []
-    meta = data.get("usageMetadata") or {}
-    return {"text": "".join(p.get("text", "") for p in parts),
-            "tokens_in": meta.get("promptTokenCount", 0),
-            "tokens_out": meta.get("candidatesTokenCount", 0) + meta.get("thoughtsTokenCount", 0)}
