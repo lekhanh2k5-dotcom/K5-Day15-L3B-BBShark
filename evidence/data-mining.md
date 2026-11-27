@@ -20,6 +20,8 @@
        sau đó **Khánh đọc lại từng dòng và kiểm** (file `evidence/labels/khanh.csv`, cột `nguoi_gan` = "AI gán, Khánh kiểm").
        Dòng 1–50 do **Hải gán tay, không dùng AI** (`evidence/label_sample.csv`).
        Dòng 1–10 có cả hai bản → độ khớp giữa nhãn "AI + người kiểm" và nhãn người gán tay độc lập được báo ở mục 3.
+     - Soát lại lần 2 theo định nghĩa trên: sửa 3 dòng (51, 64, 88) từ `khong` thành `co` — cả 3 là "hủy đơn mà không được hoàn tiền / hoàn quá lâu".
+       Lý do ghi ở cột `ghi_chu`. Số dòng Khánh sửa ở lần kiểm đầu: __ *(Khánh điền)*.
 - **Mẫu số:** N = số review đã tải của từng app (không phải số người dùng app). Với kết quả gán nhãn: mẫu số = 100 review đã rút.
 - **Script:** `evidence/scripts/scrape_reviews.py` → `evidence/review_counts.csv` (số đếm), `evidence/label_sample.csv` (mẫu gán nhãn).
 
