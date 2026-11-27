@@ -13,7 +13,8 @@
 |---|---|---|---|---|
 | 1 | Lê Ngọc Khánh | 2A202603804 | Đội trưởng | Đào data pre-class, bộ câu thử và chấm lượt chạy |
 | 2 | Hồ An Lộc | 2A202603743 | Thành viên | Bản chạy thử: bộ điều phối và nối model |
-| 3 | Nguyễn Quốc Quang Anh | 2A202604120 | Thành viên | Phỏng vấn học viên, mô phỏng chi phí |
+| 3 | Nguyễn Quốc Quang Anh | 2A202604120 | Thành viên | Mô phỏng chi phí, slide demo |
+| 4 | Đoàn Công Hải | 2A202603739 | Thành viên | Phỏng vấn, khảo sát học viên |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.
