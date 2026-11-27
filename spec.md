@@ -44,7 +44,9 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): không (tr
 ## §4. Thiết kế *(guide 2.2, 3.2)*
 - **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): Một khách nhận đơn thiếu một món · nhắn khiếu nại trong app · AI tra đơn và chính sách rồi quyết định hoàn phần thiếu, hỏi thêm hay chuyển nhân viên · khách nhận phương án trong hạn mức, hoặc biết đã được chuyển cho người xử lý.
 - Không làm (≥3 điều): không chuyển tiền thật (chỉ tạo đề xuất chờ khách xác nhận) · không xử lý đơn bị huỷ, hoàn phí ship, trả hàng trên sàn · không xử phạt quán hay tài xế · không đọc ảnh chụp món · không tự đóng khiếu nại.
-- **Sơ đồ** (Mermaid, khớp từng bước trong `codebase/agent.py`):
+- **Sơ đồ kiến trúc AI** (ảnh vector + Mermaid, khớp từng bước trong `codebase/agent.py`):
+
+![Sơ đồ kiến trúc AI — Track D1 BBShark](docs/ai-architecture.svg)
 
 ```mermaid
 flowchart TD
