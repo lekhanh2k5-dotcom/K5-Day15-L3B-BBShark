@@ -10,7 +10,12 @@
   3. `thieu_sai_mon` (đếm chặt, đúng lát cắt D1): review nói đơn bị thiếu món / sai món (regex `STRICT`).
   4. **Gán nhãn tay:** rút ngẫu nhiên 100 review trong tập `food_issue` của ShopeeFood (seed 42). Mỗi review trả lời một câu:
      *"Review này có kể chuyện đơn đồ ăn gặp sự cố mà khiếu nại không được xử lý thỏa đáng không?"* → `co` / `khong` / `khong_ro`.
-     Hai người gán (Hải dòng 1–50, Khánh dòng 51–100); 10 dòng đầu cả hai cùng gán để đo độ khớp.
+     Hai người gán (Hải dòng 1–50, Khánh dòng 51–100); 10 dòng đầu cả hai cùng gán, độc lập, để đo độ khớp.
+     - `co` (hoặc 1): có **cả hai** — (a) sự cố cụ thể của đơn (thiếu / sai món, trễ, đồ hỏng hoặc nguội, bị huỷ, bị trừ tiền)
+       **và** (b) khiếu nại / hỗ trợ không thỏa đáng (không ai hỗ trợ, không hoàn hoặc hoàn quá lâu, bồi thường không xứng, không khiếu nại được).
+     - `khong` (hoặc 2): thiếu một trong hai — chỉ kể sự cố mà không nhắc khiếu nại, hoặc nói chuyện khác (lỗi app, không cho huỷ, khuyến mãi, phí ship).
+     - `khong_ro` (hoặc 3): quá mơ hồ để biết sự cố gì hoặc đã khiếu nại chưa. Phân vân giữa `co` và `khong` thì chọn `khong_ro`, ghi lý do ở `ghi_chu`.
+     - Báo cáo: x = số `co`; ghi riêng số `khong_ro`, không cộng vào x.
 - **Mẫu số:** N = số review đã tải của từng app (không phải số người dùng app). Với kết quả gán nhãn: mẫu số = 100 review đã rút.
 - **Script:** `evidence/scripts/scrape_reviews.py` → `evidence/review_counts.csv` (số đếm), `evidence/label_sample.csv` (mẫu gán nhãn).
 
