@@ -5,12 +5,12 @@
 
 | # | Trang | Có gì | Số lấy từ | Xong |
 |---|---|---|---|---|
-| 1 | Người dùng & pain | 64 review nhắc thiếu/sai món. Dùng trích dẫn ShopeeFood số 1 trong evidence/data-mining.md và ảnh hướng hỗ trợ ở spec.md §0. | `evidence/summary.md` | ☐ |
-| 2 | Vì sao chọn bài này | Cùng 100 người gặp việc mỗi tháng: D1 1.250 phút, D2 2.000, D3 1.500 (tự ước tính). Chọn D1 vì đã có bằng chứng và đơn để kiểm đáp án. | `spec.md` §2 | ☐ |
-| 3 | Giải pháp | Khách báo món thiếu → tra đơn → tính giá món bằng code → đề xuất. Quá 200.000đ thì chuyển người theo chính sách dựng. | `spec.md` §4 | ☐ |
-| 4 | Demo live | B01: thiếu 1 trà sữa, kỳ vọng đề xuất 35.000đ. B10: phần thiếu 203.000đ, kỳ vọng chuyển người. Khi demo đối chiếu output thật với hai đáp án. | `eval/benchmark.csv` | ☐ |
-| 5 | **Đánh giá thế nào** | 27 câu, 9 từ review, 4 metric. Bổ sung run ID, kết quả hai lượt và lỗi chính khi có file đã chấm. | `eval/README.md`, `eval/report.md` | ☐ |
-| 6 | **Chi phí khi dùng thật** | 50 phiên dự kiến. Ba quy mô 50/100/200 khách (tự ước tính). Bổ sung chi phí/task thành công từ token thật và tỉ lệ đạt. | `cost/cost-estimate.md` | ☐ |
+| 1 | Người dùng & pain | Ai · việc gì · chỗ đau + số và trích dẫn | `evidence/summary.md` | ☐ |
+| 2 | Vì sao chọn bài này | Bảng impact rút gọn + hướng bị loại | `spec.md` §2 | ☐ |
+| 3 | Giải pháp | Lát cắt một câu · sơ đồ · AI tự làm đến đâu, vì sao | `spec.md` §4 | ☐ |
+| 4 | Demo live | 1 trường hợp thường + 1 trường hợp khó (lấy từ bộ câu thử); mạng hỏng → video dự phòng | `eval/benchmark.csv` | ☐ |
+| 5 | **Đánh giá thế nào** | Dataset · bộ câu thử · metric · lượt 1 → lượt 2 so với chuẩn "đạt" (kèm run ID) · lỗi chính | `eval/README.md`, `eval/report.md` | ☐ |
+| 6 | **Chi phí khi dùng thật** | Chi phí / task thành công · 3 kịch bản · so với impact | `cost/cost-estimate.md` | ☐ |
 | 7 | Kết luận | Go / iterate / stop — dẫn số ở trang 1, 5, 6 | — | ☐ |
 | 8 | Nếu có thêm 1 tuần | 2–3 việc, trỏ về lỗi còn lại / phản hồi người dùng | `eval/report.md` mục 4 · `validation/log.md` | ☐ |
 

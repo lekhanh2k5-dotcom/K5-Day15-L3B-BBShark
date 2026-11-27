@@ -7,17 +7,14 @@ Track: [ ] A · [ ] B · [ ] C · [x] D · [ ] E — bài toán: D1 · Xử lý 
 Data BTC cấp đã dùng (nếu có — không commit nguyên file): không (track D không có data BTC; dùng review công khai Google Play)
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
-
-**ShopeeFood, quan sát trên tài khoản của Quang Anh.** Ngày 27/11/2026, trợ lý hướng dẫn khách nhập ngắn gọn, có dấu và không viết tắt. Các ảnh cho thấy luồng bắt đầu trong khung chat **Tép Thám Tử**.
-
-1. Khung chat hiển thị các chủ đề hỗ trợ, trong đó có báo cáo vấn đề của đơn đã nhận.
-2. Khi khách chọn **Giao sai/thiếu món**, Tép hỏi thông tin đơn và hiện hai nút **Chọn đơn hàng** và **Hướng hỗ trợ đơn sai/thiếu món**. [Ảnh hội thoại](docs/shopeefood-huong-ho-tro.jpg)
-3. Ở nhánh **Chọn đơn hàng**, cửa sổ **Select Order** có hai tab **Ongoing** và **History**. Tab Ongoing đang mở và báo chưa có đơn. Ảnh không cho biết nội dung tab History. [Ảnh chọn đơn](docs/shopeefood-chon-don.jpg)
-4. Ở nhánh **Hướng hỗ trợ đơn sai/thiếu món**, Tép nêu hai cách: liên hệ quán qua số do ShopeeFood cung cấp, hoặc gửi ảnh thực tế đơn đã nhận để ShopeeFood xem xét bồi hoàn. [Ảnh hướng xử lý](docs/shopeefood-huong-ho-tro.jpg)
-
-**Điểm dừng quan sát.** Ảnh ghi nhận hướng dẫn của trợ lý và màn hình chọn đơn. Chưa quan sát việc gửi yêu cầu cho một đơn cụ thể, thời gian xử lý hay kết quả hoàn tiền. Loại AI phía sau trợ lý: **chưa kiểm**.
-
-Review Google Play nhắc tới Chatbox của Grab. Luồng trên tài khoản Grab, be và Xanh SM chưa được nhóm kiểm trực tiếp. Ảnh ShopeeFood cũng chưa xác nhận thời gian chờ khi khách viết tắt. [Bằng chứng review](evidence/data-mining.md)
+- Luồng hiện tại của việc này trên app thật (kiểm trực tiếp trên ShopeeFood ngày 27/11/2026 — Quang Anh; *ảnh chụp che thông tin bổ sung trước CP3*):
+  1. Khách nhận đơn thấy thiếu/sai món hoặc giao trễ → mở mục Hỗ trợ / chat với trợ lý **"Tép Thám Tử"** trong app.
+  2. Khung chat yêu cầu khách *"nhập ngắn gọn, có dấu, không viết tắt"*.
+  3. Khách mô tả sự cố → trợ lý nhận diện ý *"giao sai / thiếu món"* nhưng đẩy về nút **"Chọn đơn hàng"** / hướng dẫn và biểu mẫu (form).
+  4. Với tin nhắn đời thường (không dấu, viết tắt) hoặc ca không khớp form → khách phải chờ nhân viên CSKH phản hồi, không rõ được hoàn bao nhiêu hay nhận voucher nhỏ.
+- Công cụ / AI đang được dùng cho việc này + nguồn:
+  - ShopeeFood: trợ lý chat **"Tép Thám Tử"** (kiểm trực tiếp trên app ngày 27/11/2026).
+  - Grab: **Chatbox** hỗ trợ trong app (nhắc trong review Google Play 1★, xem `evidence/data-mining.md` mục 4; chưa kiểm trực tiếp từng bước luồng chat của Grab, be, Xanh SM).
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
 - Người dùng chính (một vai cụ thể): người đặt đồ ăn qua app giao đồ ăn vừa nhận đơn thiếu món (hoặc sai món, giao trễ) và nhắn khiếu nại trong app.
@@ -40,37 +37,9 @@ Review Google Play nhắc tới Chatbox của Grab. Luồng trên tài khoản G
   - **Tranh chấp thái độ tài xế / xử phạt quán:** cần bằng chứng đối chất ngoài hội thoại (GPS, ghi âm, lịch sử vận hành); nếu AI xử lý sai dễ gây thiệt hại oan cho tài xế hoặc quán (review ShopeeFood 1★: *"quán làm thiếu đồ nhưng shipper phải chịu hết trách nhiệm ???"*).
 - Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8): *cập nhật sau phỏng vấn P1–P3 trước CP3* — dự kiến 3 nhóm: đặt ít (0,5–1 lần khiếu nại/tháng), đặt vừa (1–2 lần/tháng), đặt nhiều/hay gặp sự cố (2–4 lần/tháng) *(tự ước tính)*.
 
-### Kịch bản triển khai thử cho 100 khách
-
-
-| Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
-|---|---|---|---|---|---|---|
-| D1 · Báo đơn thiếu món | 100 khách báo thiếu món | 1,25 lần/người | 10 phút chủ động báo và theo dõi | 1.250 phút | Có sẵn đơn, chính sách và bộ câu thử | Chọn |
-| D2 · Gom đơn nhóm | 100 người đứng ra gom đơn | 2 lần/người | 10 phút gom và đối chiếu món | 2.000 phút | Cần dữ liệu lựa chọn của nhiều người trong cùng đơn | Loại ở lát cắt này |
-| D3 · Trả hàng | 100 người yêu cầu trả hàng | 1 lần/người | 15 phút lập yêu cầu và theo dõi | 1.500 phút | Cần dữ liệu hàng trả, lý do và trạng thái tiếp nhận | Loại ở lát cắt này |
-
-**Cách đọc bảng.** Mỗi dòng xét cùng quy mô 100 người thực sự gặp việc đó trong tháng để so sánh. Quy mô, tần suất và phút mỗi lần đều là giả định kịch bản *(tự ước tính)*. Phép nhân đo tổng thời gian khách đang bỏ ra. Thời gian sản phẩm tiết kiệm được chưa đo.
-
-- **Quy mô thị trường.** Ken Research ước tính khoảng 350 triệu đơn đồ ăn qua nền tảng tại Việt Nam năm 2025 từ tổng giá trị giao dịch và giá trị đơn trung bình. Chia 12 được khoảng **29,2 triệu đơn/tháng**, bình quân năm 2025. [Báo cáo của Ken Research](https://www.kenresearch.com/vietnam-online-food-delivery-platforms-market)
-- **Tỉ lệ đơn có sự cố.** Chưa có nguồn trong các tài liệu đã kiểm cho biết bao nhiêu phần trăm *tổng đơn giao tại Việt Nam* bị thiếu món. Đếm từ khoá cho 64 review nhắc thiếu/sai món. Mẫu số là review, nên chưa thể suy ra số đơn gặp sự cố trên toàn quốc. [Cách đếm và giới hạn](evidence/data-mining.md)
-- **Thời gian xử lý.** Grab công bố bước kiểm tra, xác minh trong vòng **2 ngày làm việc** kể từ lúc nhận khiếu nại. Đây là thời hạn của một bước. Chưa có số đo trung bình từ lúc báo thiếu món đến lúc nhận kết quả, hoặc số phút khách trực tiếp thao tác. Mức 10 phút ở bảng là *(tự ước tính)*, cần đối chiếu với phỏng vấn. [Quy trình khiếu nại của Grab, bước 2](https://www.grab.com/vn/terms-policies/transport-delivery-logistics/)
-- **Impact D1.** Trong kịch bản cơ sở, 80 khách báo 1 lần, 15 khách báo 2 lần và 5 khách báo 3 lần trong tháng *(tự ước tính cho §8)*. Tổng 125 lần cho 100 khách. Vậy **100 × 1,25 × 10 = 1.250 phút/tháng**, tương đương **12,5 phút/khách/tháng**.
-- **Vì sao chọn D1.** D2 có tổng phút lớn nhất theo giả định trên, nhưng dữ liệu hiện có của nhóm chỉ ghi món theo đơn, chưa ghi người chọn từng món. D3 cần luồng tiếp nhận hàng trả nằm ngoài §4. D1 đã có review về thiếu/sai món, dữ liệu đơn có giá và số lượng, cùng đáp án kiểm được bằng tiền. [Bằng chứng](evidence/data-mining.md) · [Data card](data/DATA_CARD.md) · [Bộ câu thử](eval/benchmark.csv)
-
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - **Tép Thám Tử (ShopeeFood — kiểm trực tiếp ngày 27/11/2026):** đáng học: đặt ngay trong luồng hỗ trợ và phân loại được ý "giao sai/thiếu món" · đáng né: bắt khách gõ *"ngắn gọn, có dấu, không viết tắt"* rồi vẫn đẩy về nút chọn đơn / form · mình khác gì: hiểu tin nhắn tự nhiên (không dấu, viết tắt như `dh`, `ib`, `tl`), tra đơn & áp chính sách ngay trong khung chat để đưa đề xuất hoàn tiền cụ thể.
 - **Chatbox hỗ trợ (Grab — ghi nhận từ review Google Play trong `evidence/data-mining.md`):** đáng học: gom các nhánh hỗ trợ tập trung trong một khung chat · đáng né: thiếu đường thoát rõ ràng sang nhân viên khi gặp ca phức tạp (review phàn nàn không có tổng đài, chatbox vòng vo) · mình khác gì: chặn bằng code và chuyển thẳng nhân viên (`chuyen_nguoi`) ngay với ca sức khoẻ, vượt 200.000đ, ≥3 khiếu nại/30 ngày, hoặc khi khách đòi gặp người.
-
-### Đối chiếu với tài liệu công khai và ảnh ứng dụng
-
-
-| Dịch vụ và điều nguồn công khai xác nhận | Điều đáng học | Điều BBShark cần tránh | Cách BBShark xử lý |
-|---|---|---|---|
-| Tép Thám Tử hướng dẫn liên hệ quán hoặc gửi ảnh đơn thực nhận để ShopeeFood xem xét bồi hoàn. [Ảnh trên app](docs/shopeefood-huong-ho-tro.jpg) [Quy trình ShopeeFood](https://shopeefood.vn/adjustment-of-claims) | Gắn phản ánh với giao dịch và căn cứ cụ thể. | Hỏi khách nhập lại giá, số lượng đã có trong đơn. | Khách nêu mã đơn và món thiếu. Code tra số lượng, đơn giá để lập đề xuất hoàn phần thiếu. |
-| Grab có kênh chat trong ứng dụng, cho xem lại tin nhắn. Điều khoản nêu thiếu món trong các trường hợp có thể hoàn trả. [Kênh chat](https://www.grab.com/vn/blog/lien-he-voi-grab-chua-bao-gio-de-dang-den-the-voi-tinh-nang-goi-va-tro-chuyen-voi-grab-thong-qua-ung-dung/) · [Điều khoản Grab](https://www.grab.com/vn/terms-policies/transport-delivery-logistics/) | Giữ căn cứ của quyết định để có thể đối chiếu lại. | Hứa khách chắc chắn nhận tiền ngay khi tiếp nhận tin nhắn. | Bản thử ghi quyết định và số tiền, đề xuất trong hạn mức chờ khách xác nhận. |
-| Điều khoản beFood yêu cầu thương nhân tham gia giải quyết khiếu nại của khách liên quan đến đơn đặt qua ứng dụng. [Điều khoản beFood dành cho thương nhân](https://be.com.vn/uncategorized/cac-dieu-khoan-va-dieu-kien-chung-ve-dich-vu-tmdt-tren-san-giao-dich-tmdt-be-ap-dung-doi-voi-thuong-nhan-befood/) | Xác định bên có trách nhiệm khi cần kiểm tra lại với quán. | Tự quy lỗi cho quán hoặc tài xế chỉ từ lời kể của khách. | Với ca vượt thẩm quyền, bản thử lập phiếu kèm lý do để nhân viên xử lý. |
-
-Các nguồn trên mô tả kênh hỗ trợ và trách nhiệm xử lý. Việc từng hãng dùng AI để tự quyết mức bồi thường cho một món thiếu **chưa kiểm**. Cột “cần tránh” là lựa chọn thiết kế cho bản thử.
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
 - **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): Một khách nhận đơn thiếu một món · nhắn khiếu nại trong app · AI tra đơn và chính sách rồi quyết định hoàn phần thiếu, hỏi thêm hay chuyển nhân viên · khách nhận phương án trong hạn mức, hoặc biết đã được chuyển cho người xử lý.
