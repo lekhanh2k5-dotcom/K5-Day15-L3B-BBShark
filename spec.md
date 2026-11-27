@@ -28,34 +28,25 @@ Review Google Play nhắc tới Chatbox của Grab. Luồng trên tài khoản G
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
-| Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
-|---|---|---|---|---|---|---|
-| Khiếu nại thiếu món / sai món / giao trễ trong khung chat | 64 review thiếu/sai món + 318 review giao trễ + 326 review hỗ trợ kém (trong 1.198 review sự cố, `evidence/review_stats.md`); quy mô ước tính 50.000 người dùng gặp sự cố/tháng *(tự ước tính)* | 1 lần/tháng *(tự ước tính — kiểm lại qua phỏng vấn P1–P3)* | 10–15 phút chờ/điền form + nguy cơ mất 35.000–50.000đ tiền món *(tự ước tính)* | ~500.000–750.000 phút chờ/tháng *(tự ước tính)* | Có — luật rõ, kiểm hạn mức bằng code được | **Chọn** |
-| Xử lý đơn bị huỷ & hoàn tiền về ví | 587/1.198 review sự cố (`evidence/review_stats.md`) | — | Chờ hoàn tiền ví nhiều ngày | Cao | Không — phụ thuộc đối soát cổng thanh toán & nhiều bên (quán, tài xế, ví) | Loại |
-| Tranh chấp thái độ tài xế / xử phạt quán | Có trong review (`evidence/data-mining.md`) | — | Mất niềm tin, rủi ro phạt oan | Trung bình | Không — cần đối chất đa chiều, AI dễ phán xét sai bên thứ ba | Loại |
+Cùng quy mô **100 người thực sự gặp việc đó trong một tháng** để so các hướng. Quy mô, tần suất và số phút mỗi lần là giả định kịch bản *(tự ước tính)*; cột "Tín hiệu từ review" là số đếm thật (`evidence/review_stats.md`, 1.198 review có sự cố trong 19.000 review Google Play).
 
-- **Impact / tháng** của hướng chọn = 50.000 người gặp sự cố *(tự ước tính)* × 1 lần/tháng *(tự ước tính)* × 10 phút chờ xử lý *(tự ước tính)* = 500.000 phút/tháng (~8.333 giờ/tháng) — nguồn: tín hiệu tần suất sự cố từ `evidence/review_stats.md` (1.198/19.000 review Google Play), các thừa số quy mô người dùng và số phút sẽ cập nhật từ nguồn công khai + phỏng vấn P1–P3 trước CP3.
-- Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
-  - **Đơn bị huỷ & hoàn tiền ví:** dù chiếm 49% review sự cố (587/1.198), việc giải quyết phụ thuộc cổng thanh toán/ngân hàng và trạng thái huỷ từ tài xế/quán — nằm ngoài phạm vi một lát cắt chat kiểm chứng được bằng code trong hackathon.
-  - **Tranh chấp thái độ tài xế / xử phạt quán:** cần bằng chứng đối chất ngoài hội thoại (GPS, ghi âm, lịch sử vận hành); nếu AI xử lý sai dễ gây thiệt hại oan cho tài xế hoặc quán (review ShopeeFood 1★: *"quán làm thiếu đồ nhưng shipper phải chịu hết trách nhiệm ???"*).
-- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8): *cập nhật sau phỏng vấn P1–P3 trước CP3* — dự kiến 3 nhóm: đặt ít (0,5–1 lần khiếu nại/tháng), đặt vừa (1–2 lần/tháng), đặt nhiều/hay gặp sự cố (2–4 lần/tháng) *(tự ước tính)*.
+| Hướng | Tín hiệu từ review | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
+|---|---|---|---|---|---|---|---|
+| **D1 · Khiếu nại thiếu / sai món, giao trễ trong khung chat** | 64 review thiếu/sai món · 318 giao trễ · 326 hỗ trợ kém | 100 khách | 1,25 lần/người | 10 phút báo và theo dõi *(tự ước tính)* | **1.250 phút** | Có: đã có đơn, chính sách, 27 câu thử, kiểm hạn mức bằng code | **Chọn** |
+| Đơn bị huỷ, chờ hoàn tiền về ví | 587 review nhắc huỷ đơn · 207 hoàn tiền chậm | — | — | Chờ hoàn tiền nhiều ngày | Không ước tính: loại vì ngoài phạm vi | Không: phụ thuộc cổng thanh toán và trạng thái huỷ từ quán, tài xế | Loại |
+| D2 · Gom đơn nhóm có ràng buộc ăn uống | Không đếm trong review | 100 người gom đơn | 2 lần/người | 10 phút gom và đối chiếu món *(tự ước tính)* | 2.000 phút | Chưa: cần dữ liệu ai chọn món nào trong cùng đơn | Loại ở lát cắt này |
+| D3 · Trả hàng, hoàn tiền trên sàn | Không đếm trong review | 100 người trả hàng | 1 lần/người | 15 phút lập yêu cầu và theo dõi *(tự ước tính)* | 1.500 phút | Chưa: cần dữ liệu hàng trả, lý do, trạng thái tiếp nhận | Loại ở lát cắt này |
 
-### Kịch bản triển khai thử cho 100 khách
-
-
-| Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
-|---|---|---|---|---|---|---|
-| D1 · Báo đơn thiếu món | 100 khách báo thiếu món | 1,25 lần/người | 10 phút chủ động báo và theo dõi | 1.250 phút | Có sẵn đơn, chính sách và bộ câu thử | Chọn |
-| D2 · Gom đơn nhóm | 100 người đứng ra gom đơn | 2 lần/người | 10 phút gom và đối chiếu món | 2.000 phút | Cần dữ liệu lựa chọn của nhiều người trong cùng đơn | Loại ở lát cắt này |
-| D3 · Trả hàng | 100 người yêu cầu trả hàng | 1 lần/người | 15 phút lập yêu cầu và theo dõi | 1.500 phút | Cần dữ liệu hàng trả, lý do và trạng thái tiếp nhận | Loại ở lát cắt này |
-
-**Cách đọc bảng.** Mỗi dòng xét cùng quy mô 100 người thực sự gặp việc đó trong tháng để so sánh. Quy mô, tần suất và phút mỗi lần đều là giả định kịch bản *(tự ước tính)*. Phép nhân đo tổng thời gian khách đang bỏ ra. Thời gian sản phẩm tiết kiệm được chưa đo.
-
-- **Quy mô thị trường.** Ken Research ước tính khoảng 350 triệu đơn đồ ăn qua nền tảng tại Việt Nam năm 2025 từ tổng giá trị giao dịch và giá trị đơn trung bình. Chia 12 được khoảng **29,2 triệu đơn/tháng**, bình quân năm 2025. [Báo cáo của Ken Research](https://www.kenresearch.com/vietnam-online-food-delivery-platforms-market)
-- **Tỉ lệ đơn có sự cố.** Chưa có nguồn trong các tài liệu đã kiểm cho biết bao nhiêu phần trăm *tổng đơn giao tại Việt Nam* bị thiếu món. Đếm từ khoá cho 64 review nhắc thiếu/sai món. Mẫu số là review, nên chưa thể suy ra số đơn gặp sự cố trên toàn quốc. [Cách đếm và giới hạn](evidence/data-mining.md)
-- **Thời gian xử lý.** Grab công bố bước kiểm tra, xác minh trong vòng **2 ngày làm việc** kể từ lúc nhận khiếu nại. Đây là thời hạn của một bước. Chưa có số đo trung bình từ lúc báo thiếu món đến lúc nhận kết quả, hoặc số phút khách trực tiếp thao tác. Mức 10 phút ở bảng là *(tự ước tính)*, cần đối chiếu với phỏng vấn. [Quy trình khiếu nại của Grab, bước 2](https://www.grab.com/vn/terms-policies/transport-delivery-logistics/)
-- **Impact D1.** Trong kịch bản cơ sở, 80 khách báo 1 lần, 15 khách báo 2 lần và 5 khách báo 3 lần trong tháng *(tự ước tính cho §8)*. Tổng 125 lần cho 100 khách. Vậy **100 × 1,25 × 10 = 1.250 phút/tháng**, tương đương **12,5 phút/khách/tháng**.
-- **Vì sao chọn D1.** D2 có tổng phút lớn nhất theo giả định trên, nhưng dữ liệu hiện có của nhóm chỉ ghi món theo đơn, chưa ghi người chọn từng món. D3 cần luồng tiếp nhận hàng trả nằm ngoài §4. D1 đã có review về thiếu/sai món, dữ liệu đơn có giá và số lượng, cùng đáp án kiểm được bằng tiền. [Bằng chứng](evidence/data-mining.md) · [Data card](data/DATA_CARD.md) · [Bộ câu thử](eval/benchmark.csv)
+- **Impact / tháng** của hướng chọn = 100 khách × 1,25 lần × 10 phút = **1.250 phút/tháng** (12,5 phút/khách/tháng). Phép nhân đo thời gian khách đang bỏ ra; thời gian sản phẩm tiết kiệm được chưa đo. Nguồn từng thừa số:
+  - **100 khách, 1,25 lần/người:** kịch bản 80 khách báo 1 lần, 15 khách báo 2 lần, 5 khách báo 3 lần trong tháng *(tự ước tính)*; khớp `cost/personas.yaml`. Sẽ thay bằng số từ khảo sát (câu "mỗi tháng đặt đồ ăn mấy lần") trước CP3.
+  - **10 phút mỗi lần:** *(tự ước tính)*. Grab công bố bước kiểm tra, xác minh khiếu nại trong vòng **2 ngày làm việc**; đây là thời hạn của một bước, không phải số phút khách thao tác. [Quy trình khiếu nại của Grab, bước 2](https://www.grab.com/vn/terms-policies/transport-delivery-logistics/) · sẽ đối chiếu với khảo sát (câu "mất bao lâu") và phỏng vấn.
+- **Quy mô thị trường (tham khảo, không dùng trong phép nhân):** Ken Research ước tính khoảng 350 triệu đơn đồ ăn qua nền tảng tại Việt Nam năm 2025, tức khoảng **29,2 triệu đơn/tháng**. [Báo cáo của Ken Research](https://www.kenresearch.com/vietnam-online-food-delivery-platforms-market) · Tỉ lệ đơn bị thiếu món trên tổng đơn toàn quốc: **chưa có nguồn**; số review không suy ra được số đơn.
+- **Hướng ĐÃ LOẠI + vì sao** (giữ lại, đừng xoá):
+  - **Đơn bị huỷ & hoàn tiền ví:** chiếm 49% review có sự cố (587/1.198), nhưng việc giải quyết phụ thuộc cổng thanh toán, ngân hàng và trạng thái huỷ từ quán, tài xế — nằm ngoài một lát cắt chat kiểm chứng được bằng code trong hackathon.
+  - **D2 · gom đơn nhóm:** tổng phút lớn nhất theo giả định, nhưng data hiện có chỉ ghi món theo đơn, chưa ghi người chọn từng món.
+  - **D3 · trả hàng:** cần luồng tiếp nhận hàng trả nằm ngoài §4.
+  - **Tranh chấp thái độ tài xế / xử phạt quán:** cần bằng chứng ngoài hội thoại (GPS, ghi âm); AI sai thì gây thiệt hại oan cho bên thứ ba (review ShopeeFood 1★: *"quán làm thiếu đồ nhưng shipper phải chịu hết trách nhiệm ???"*).
+- **Số lần / tháng của từng kiểu người dùng** (persona ở §8, `cost/personas.yaml`): báo 1 lần/tháng (80%) · báo 2 lần (15%) · báo 3 lần (5%) *(tự ước tính, cập nhật từ khảo sát trước CP3)*.
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - **Tép Thám Tử (ShopeeFood — kiểm trực tiếp ngày 27/11/2026):** đáng học: đặt ngay trong luồng hỗ trợ và phân loại được ý "giao sai/thiếu món" · đáng né: bắt khách gõ *"ngắn gọn, có dấu, không viết tắt"* rồi vẫn đẩy về nút chọn đơn / form · mình khác gì: hiểu tin nhắn tự nhiên (không dấu, viết tắt như `dh`, `ib`, `tl`), tra đơn & áp chính sách ngay trong khung chat để đưa đề xuất hoàn tiền cụ thể.
