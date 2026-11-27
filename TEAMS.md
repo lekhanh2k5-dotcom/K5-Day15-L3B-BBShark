@@ -11,10 +11,10 @@
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 | Lê Ngọc Khánh | 2A202603804 | Đội trưởng | Cào và đếm review, bộ câu thử, chấm lượt chạy |
-| 2 | Hồ An Lộc | 2A202603743 | Thành viên | Bản chạy thử: agent, công cụ, nối model |
-| 3 | Nguyễn Quốc Quang Anh | 2A202604120 | Thành viên | Data giả (đơn, chính sách), mô phỏng chi phí, slide |
-| 4 | Đoàn Công Hải | 2A202603739 | Thành viên | Phỏng vấn người dùng, gán nhãn review |
+| 1 | Lê Ngọc Khánh | 2A202603804 | Đội trưởng | Cào và đếm review, data giả, bộ câu thử, chấm lượt chạy |
+| 2 | Hồ An Lộc | 2A202603743 | Thành viên | Nối model, duyệt bản chạy thử và sơ đồ, kịch bản khó (spec §5–6) |
+| 3 | Nguyễn Quốc Quang Anh | 2A202604120 | Thành viên | Luồng hiện tại, giải pháp tương tự, bảng impact (spec §0, §2, §3), mô phỏng chi phí, slide |
+| 4 | Đoàn Công Hải | 2A202603739 | Thành viên | Phỏng vấn, khảo sát, gán nhãn review |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.

@@ -5,6 +5,11 @@
 Ra: data/mock/orders.json · data/mock/policy.json · data/mock/complaints.json
 Quán, món, khách đều là tên dựng ("Quán Mẫu …", khách K01…). Không có dữ liệu người thật.
 Vài đơn được viết tay (FIXED) để khớp các câu thử trong eval/benchmark.csv; phần còn lại sinh ngẫu nhiên với seed.
+
+CẢNH BÁO: các câu thử dùng cả đơn viết tay (A101–A108) lẫn đơn sinh ngẫu nhiên (A109–A118).
+Không sửa FIXED, MENU, SEED hay thứ tự gọi rng — đổi là đáp án câu thử sai.
+Muốn thêm đơn: thêm vào CUỐI danh sách (A131 trở đi). Sửa tay file JSON thì lần chạy script sau sẽ ghi đè.
+Sửa xong chạy: python data/make_mock_data.py && python eval/check_decisions.py  (phải ra 0 câu trượt).
 """
 import json
 import os

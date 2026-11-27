@@ -11,6 +11,7 @@ Repo nộp bài hackathon AI20K của nhóm: một bản chạy thử AI cho **m
 ```
 python run.py                    # chạy bản chạy thử
 python run.py check              # kiểm eval/benchmark.csv + eval/metric_spec.yaml
+python eval/check_decisions.py    # kiểm code ra quyết định (không gọi model) — chạy sau khi sửa data/ hoặc codebase/
 python run.py eval --try         # thử 3 câu đầu
 python run.py eval               # chạy cả bộ → eval/run-N.csv + traces/run-N.jsonl
 python run.py score eval/run-N.csv
