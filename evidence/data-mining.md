@@ -18,8 +18,8 @@
      - Báo cáo: x = số `co`; ghi riêng số `khong_ro`, không cộng vào x.
      - **Cách gán thực tế (khai rõ):** dòng 1–10 và 51–100 do **AI gán nhãn trước** (kèm lý do ở cột `ghi_chu`),
        sau đó **Khánh đọc lại từng dòng và kiểm** (file `evidence/labels/khanh.csv`, cột `nguoi_gan` = "AI gán, Khánh kiểm").
-       Dòng 1–50 do **Hải gán tay, không dùng AI** (`evidence/label_sample.csv`).
-       Dòng 1–10 có cả hai bản → độ khớp giữa nhãn "AI + người kiểm" và nhãn người gán tay độc lập được báo ở mục 3.
+       Dòng 1–50 do **AI gán nhãn trước** (kèm lý do ở cột `ghi_chu`), sau đó **Hải kiểm lại** (`evidence/label_sample.csv`, cột `nguoi_gan` = "AI gán, Hải kiểm").
+       Dòng 1–10 có cả hai bản → độ khớp giữa hai bản trên 10 dòng chung được báo ở mục 3.
      - Soát lại lần 2 theo định nghĩa trên: sửa 3 dòng (51, 64, 88) từ `khong` thành `co` — cả 3 là "hủy đơn mà không được hoàn tiền / hoàn quá lâu".
        Lý do ghi ở cột `ghi_chu`. Số dòng Khánh sửa ở lần kiểm đầu: __ *(Khánh điền)*.
 - **Mẫu số:** N = số review đã tải của từng app (không phải số người dùng app). Với kết quả gán nhãn: mẫu số = 100 review đã rút.
@@ -45,7 +45,7 @@
 
 Trong 1.198 review "đồ ăn + sự cố", 1.127 review (94%) là 1–2★.
 
-**Gán nhãn tay (đang làm, xong trước CP3):** x/100 review trong mẫu đúng là "khiếu nại không được xử lý thỏa đáng" → __%. Độ khớp giữa 2 người trên 10 dòng chung: __/10.
+**Gán nhãn mẫu 100 review:** **30/100** review trong mẫu đúng là "khiếu nại không được xử lý thỏa đáng" → **30%** (ngoài ra có 6/100 `khong_ro`, không cộng vào x; 64/100 `khong`). Độ khớp giữa 2 người kiểm trên 10 dòng chung (1–10): **10/10**.
 
 ## 4. ≥5 ví dụ cụ thể (nguyên văn, đã bỏ tên người viết)
 
