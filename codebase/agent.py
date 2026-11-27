@@ -22,7 +22,7 @@ from tools import (check_limit, compute_remedy, escalate_to_human, get_complaint
                    propose_refund)
 from tracing import note
 
-SAFETY = re.compile(r"ngộ độc|dị ứng|khó thở|ngứa|nổi mẩn|nôn|ói|tiêu chảy|đau bụng|dị vật|có tóc|có gián|mảnh (?:kim loại|thủy tinh)", re.I)
+SAFETY = re.compile(r"\b(?:ngộ độc|dị ứng|khó thở|ngứa|nổi mẩn|buồn nôn|nôn|ói mửa|tiêu chảy|đau bụng|dị vật|có tóc|có gián|mảnh (?:kim loại|thủy tinh))\b", re.I)
 WANT_HUMAN = re.compile(r"gặp nhân viên|nói chuyện với người|người thật|tổng đài viên|chuyển (?:cho )?nhân viên", re.I)
 ORDER_ID = re.compile(r"#?\b([Aa]\d{3})\b")
 MONEY = re.compile(r"(\d{1,3}(?:[.,]\d{3})+|\d+)\s*(k|nghìn|ngàn|đ|vnd|vnđ)\b", re.I)
