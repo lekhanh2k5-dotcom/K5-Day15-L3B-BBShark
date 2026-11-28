@@ -24,9 +24,8 @@
 1. Sau khi PR sửa prompt `sai_mon` được merge: `git pull`, rồi `python run.py eval` → `eval/run-2.csv` + `traces/run-2.jsonl` → `python eval/grade.py eval/run-2.csv` → `python run.py score eval/run-2.csv`. Commit cả hai file. Cùng model với lượt 1 (`gpt-4o-mini`).
 2. Sau khi `cost/personas.yaml` được sửa: `python run.py simulate` (≥50 phiên, model thật) → `cost/simulate-N.csv` + `cost/simulate-N-summary.md`. Commit.
 3. Quay **video demo dự phòng** (1–2 phút): 1 trường hợp thường + 1 trường hợp khó (vd tấn công chèn lệnh, hoặc khiếu nại vượt hạn mức → chuyển nhân viên). Drive "Bất kỳ ai có đường liên kết". Gửi link cho Khánh.
-4. Gửi riêng file `.env` (key) cho Khánh để làm người dùng thử. Không đăng key lên nhóm chung, không commit.
-5. Điền các ô ghi "khai" của mình trong `docs/ai-usage.md`.
-6. Hạn: lượt 2 + simulate trước 10:30; video trước 13:30.
+4. Điền các ô ghi "khai" của mình trong `docs/ai-usage.md`.
+5. Hạn: lượt 2 + simulate trước 10:30; video trước 13:30.
 
 ## Nguyễn Quốc Quang Anh · slide
 
@@ -46,7 +45,7 @@
 
 1. Sửa prompt phân loại cho `sai_mon` (ghi món đã đặt, không ghi món nhận nhầm) — cải tiến cho lượt 2.
 2. Sửa `cost/personas.yaml`: thêm giá `gpt-4o-mini` (model đang chạy) và một model mạnh hơn; bỏ `gemini-2.5-flash` (bảng giá của đề ghi đã ngừng).
-3. **Người dùng thử (bonus +5)** → `validation/log.md`: mời 3–5 bạn **ngoài nhóm** gõ thử khiếu nại vào bản chạy thử (`python run.py`, máy có key; gõ tin nhắn sau dấu `>`, Enter 2 lần để thoát). Đưa họ bảng đơn có sẵn để tự viết khiếu nại:
+3. **Người dùng thử (bonus +5)** → `validation/log.md`: mời 3–5 bạn **ngoài nhóm** gõ thử khiếu nại vào bản chạy thử (`python run.py` trên máy Khánh với key tự chuẩn bị; gõ tin nhắn sau dấu `>`, Enter 2 lần để thoát). Đưa họ bảng đơn có sẵn để tự viết khiếu nại:
 
    | Mã đơn | Món trong đơn |
    |---|---|
