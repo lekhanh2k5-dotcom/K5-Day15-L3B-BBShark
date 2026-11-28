@@ -1,4 +1,36 @@
-# BBShark · Phân công CP4 (hạn 14:30 Thứ Bảy 28/11)
+# BBShark · Sau CP4 (hạn 23:59 Thứ Bảy 28/11)
+
+> CP4 đã nộp (commit `9429c14`).
+> Mọi thay đổi sau 14:30 phải có 1 dòng ở bảng "Sau CP4" trong `spec.md` §10.
+> Không sửa: chuẩn "đạt", câu thử cũ, số bằng chứng, `eval/run-1.csv`, `eval/run-2.csv`, traces đã chạy.
+> Mỗi việc: nhánh mới từ `main` → commit → push → pull request. Khánh merge.
+
+## Hồ An Lộc
+
+1. **Reflection** `reflection/ho-an-loc.md` theo `reflection/TEMPLATE.md` (3 câu, mỗi câu 3–6 dòng, trỏ tới file hoặc commit của mình).
+2. *(Không bắt buộc)* Sửa lỗi người dùng thử gặp (`validation/log.md`):
+   - Khớp tên món viết ngắn ở code ("trà sữa" → "Trà sữa trân châu" khi đơn chỉ có 1 món chứa tên đó).
+   - Lời nhắn chuyển nhân viên nêu lý do.
+   - Sửa xong: `python eval/check_decisions.py` ra 0 câu trượt. Nếu chạy lại eval thì ghi thành `run-3`, không ghi đè `run-2`. Ghi changelog.
+
+## Nguyễn Quốc Quang Anh
+
+1. **Reflection** `reflection/nguyen-quoc-quang-anh.md`.
+2. `git pull` trước khi sửa slide. Khánh đã sửa trực tiếp `slides/demo.html` ở trang 1, 4 và 7.
+
+## Đoàn Công Hải
+
+1. Sửa reflection: đổi commit `f069c85` thành `07509d4` (commit trên `main`).
+
+## Lê Ngọc Khánh
+
+1. **Reflection** `reflection/le-ngoc-khanh.md`.
+2. Thu hồi key OpenRouter đã dùng hôm nay.
+3. Merge PR, rà changelog lần cuối trước 23:59.
+
+---
+
+# BBShark · Phân công CP4 (hạn 14:30 Thứ Bảy 28/11) — Đã xong
 
 > CP3 đã nộp. CP4 là bản dùng để **xét giải** (cùng phần demo).
 > Vẫn KHÔNG sửa: `spec.md` §7, `eval/metric_spec.yaml`, đáp án (`expected`) câu thử cũ, `data/mock/`, `eval/run-1.csv`, `traces/run-1.jsonl`.
