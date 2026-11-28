@@ -207,3 +207,4 @@ flowchart TD
 | 28/11 · 14:40 | Thêm giao diện demo trên trình duyệt `demo/app.py` (`python demo/app.py`): gọi đúng `agent.answer` như `run.py`, hiện danh sách đơn và từng bước AI / code đã làm. Không đổi logic, không đổi kết quả lượt 2 | Demo trước giám khảo dễ theo dõi hơn terminal, thấy rõ phần AI hiểu tin nhắn và phần code tính tiền, kiểm hạn mức |
 | 28/11 · sau 14:30 | `TASKS.md`: phân công sau CP4 (reflection từng người, sửa commit trong reflection của Hải, việc không bắt buộc của Lộc) | Chuẩn bị hạn 23:59 (guide 5.3) |
 | 28/11 · sau 14:30 | Thêm `reflection/le-ngoc-khanh.md` | Reflection mỗi người, hạn 23:59 (guide 5.3) |
+| 28/11 · 16:12 | Thêm [reflection của Nguyễn Quốc Quang Anh](reflection/nguyen-quoc-quang-anh.md). | Ghi lại phần việc cá nhân, cách dùng Codex và bài học từ câu B02. |
