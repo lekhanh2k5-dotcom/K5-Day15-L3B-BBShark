@@ -54,7 +54,7 @@
    - **Cách ghi trong `cost/scale-sources.md`** — một bảng, mỗi dòng một số liệu:
      `Số liệu | Giá trị | Năm / kỳ của số liệu | Link nguồn | Ngày xem | Ghi chú (cách tính, nếu tự quy đổi)`
      Sau bảng, đề xuất giá trị cho 3 kịch bản (thấp · cơ sở · cao) kèm 1 dòng lý do mỗi kịch bản.
-   - **Luật:** mỗi số phải có link + ngày xem, hoặc ghi rõ *(tự ước tính)* kèm lý do. Không lấy số từ trang không mở được, không lấy từ đoạn trích của công cụ tìm kiếm, không dùng số khảo sát của nhóm. Quy đổi (vd năm → tháng) thì ghi cách tính.
+   - **Luật:** mỗi số phải có link + ngày xem, hoặc ghi rõ *(tự ước tính)* kèm lý do. Không lấy số từ trang không mở được, không lấy từ đoạn trích của công cụ tìm kiếm. Quy đổi (vd năm → tháng) thì ghi cách tính.
 2. Soạn **nội dung slide trang 1** (người dùng & nỗi đau) gửi Quang Anh: số review, kết quả nhãn 30/100, 1–2 câu nguyên văn từ P1–P3. Hạn 11:30.
 3. Sửa `reflection/doan-cong-hai.md`: bỏ phần khảo sát, sửa câu "gán nhãn tay dòng 1–50" cho khớp sự thật (AI gán, Hải kiểm). Nộp PR. Hạn 23:59.
 
