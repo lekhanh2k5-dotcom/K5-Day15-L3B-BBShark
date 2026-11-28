@@ -198,6 +198,7 @@ flowchart TD
 | 28/11 · 10:31 | Simulate 50 phiên (Lộc) → chi phí / task thành công | `cost/simulate-1-summary.md` |
 | 28/11 · 11:30 | Viết `cost/cost-estimate.md`, `spec.md` §8, kết quả lượt 2 trong `eval/report.md`, `eval/README.md`, §7 | Số từ `cost/simulate-1-summary.md`, `cost/scale-sources.md`, `eval/run-2.csv` |
 | 28/11 · 12:20 | Quang Anh chuẩn bị bản nháp 8 trang và khai báo hỗ trợ của Codex. | Đối chiếu lượt 1 với lượt 2 và mô phỏng 50 phiên ở commit `5a8f70d` của Lộc; ghi nguồn quy mô ở commit `f9e7e37` của Hải. |
+| 28/11 · 14:10 | Người dùng thử 2 người ngoài nhóm (`validation/log.md`). **Không sửa code trước CP4**, ghi 3 thay đổi để làm sau: khớp tên món ngắn ở code, giữ mã đơn trong phiên, lời nhắn chuyển nhân viên nêu lý do và thời gian chờ | Cả 2 người đều bị hỏi lại thứ đã nói (tên món ngắn, bot quên mã đơn); 1 người bỏ ngang sang tổng đài. Lượt 2 đã chốt trên code hiện tại nên không sửa ngay |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
