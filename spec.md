@@ -204,4 +204,4 @@ flowchart TD
 
 | Thời điểm | Đổi gì | Vì sao |
 |---|---|---|
-|  |  |  |
+| 28/11 · 14:40 | Thêm giao diện demo trên trình duyệt `demo/app.py` (`python demo/app.py`): gọi đúng `agent.answer` như `run.py`, hiện danh sách đơn và từng bước AI / code đã làm. Không đổi logic, không đổi kết quả lượt 2 | Demo trước giám khảo dễ theo dõi hơn terminal, thấy rõ phần AI hiểu tin nhắn và phần code tính tiền, kiểm hạn mức |
