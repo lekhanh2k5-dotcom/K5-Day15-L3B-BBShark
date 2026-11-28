@@ -171,6 +171,9 @@ flowchart TD
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
 | 27/11 · CP3 | Quang Anh bổ sung giới hạn của ba bộ data giả và chuẩn bị [câu hỏi phỏng vấn](evidence/interviews/huong-dan-d1.md). Chạy thử cấu hình chi phí 10 phiên, seed 42. | [Rà dữ liệu](data/DATA_CARD.md) cho thấy thiếu ca sát ngưỡng 30 phút và 3 khiếu nại. Cả 10 phiên thử thuộc persona báo một lần, dùng model giả với token bằng 0. Chưa có số đo chi phí. |
+| 27/11 · 23:35 | Lượt 1 với `gpt-4o-mini`: 26/27 (96%), câu thuong 5/6 → chưa đạt chuẩn | `eval/run-1.csv`, `run-1@20261127-224904` |
+| 28/11 · 09:20 | **Cải tiến cho lượt 2:** prompt phân loại (`SYSTEM_CLASSIFY`) thêm quy tắc với `sai_mon` — ghi món khách đã đặt, không ghi món nhận nhầm | Câu B02 trượt ở lượt 1: model ghi "trà đào" (món nhận nhầm) nên code không tìm thấy trong đơn và từ chối (`eval/run-1.csv`) |
+| 28/11 · 09:20 | `cost/personas.yaml`: giá theo model đang chạy (`gpt-4o-mini`) và 2 mức model mạnh hơn; bỏ `gemini-2.5-flash` | Bảng giá của đề ghi `gemini-2.5-flash` đã ngừng; simulate cần giá của model thực đo |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

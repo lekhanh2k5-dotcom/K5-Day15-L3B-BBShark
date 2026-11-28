@@ -25,13 +25,18 @@ personas:
     turns_per_session: 2
     source: "Tỉ trọng, tần suất và số lượt trao đổi (tự ước tính), xem spec.md §2."
 
-# USD / 1 triệu token văn bản, trả phí tiêu chuẩn
+# USD / 1 triệu token văn bản, trả phí tiêu chuẩn. Giá theo bảng giá của đề (further-reading/model-prices.md),
+# đối chiếu trang giá OpenAI ngày 25/11/2026. Không dùng gemini-2.5-flash: bảng giá ghi model này đã ngừng.
 prices:
-  - model: gemini-2.5-flash-lite
-    input: 0.10
-    output: 0.40
-    source: "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash-lite · xem 27/11/2026"
-  - model: gemini-2.5-flash
-    input: 0.30
-    output: 2.50
-    source: "https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash · xem 27/11/2026"
+  - model: gpt-4o-mini
+    input: 0.15
+    output: 0.60
+    source: "https://developers.openai.com/api/docs/pricing · model đang chạy lượt 1–2 · xem 25/11/2026"
+  - model: gpt-5-mini
+    input: 0.25
+    output: 2.00
+    source: "https://developers.openai.com/api/docs/pricing · tầng nhỏ, mạnh hơn · xem 25/11/2026"
+  - model: gpt-6.1-terra
+    input: 1.00
+    output: 5.00
+    source: "https://developers.openai.com/api/docs/pricing · tầng vừa (mức model mạnh để so) · xem 25/11/2026"
