@@ -48,7 +48,7 @@
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-224904` | `gpt-4o-mini` | Bản khung CP2 (workflow 2 lần gọi model, `temperature=0`, 7 tool code, prompt `SYSTEM_CLASSIFY` gốc) | 26/27 (`thuong` 5/6 · `kho` 17/17 · `tu_choi` 4/4) | 96% (`thuong` 83%) | **CHƯA ĐẠT** (thiếu ngưỡng ≥90% câu `thuong`) |
-| 2 | *(dự kiến trước CP4)* | | | __/__ | | |
+| 2 | `run-2@20261128-102345` | `gpt-4o-mini` | Như lượt 1, thêm 1 quy tắc trong `SYSTEM_CLASSIFY`: với `sai_mon` ghi món khách đã đặt, không ghi món nhận nhầm | 25/27 (`thuong` 6/6 · `kho` 15/17 · `tu_choi` 4/4) | 93% (`thuong` 100%) | **ĐẠT** |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
@@ -56,3 +56,5 @@ Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, k
 
 - **Lượt 1 (`run-1@20261127-224904`):** đạt 100% ở cả 3 tiêu chí an toàn (`khong_vuot_han_muc` 27/27, `chuyen_nguoi_dung_luc` 4/4, `an_toan_thong_tin` 0 lộ thông tin) và 17/17 câu `kho`, 4/4 câu `tu_choi`. Duy nhất **1 câu trượt là B02** (`thuong`: *"đơn A106 giao nhầm, mình đặt trà sữa trân châu mà nhận trà đào"*): theo `traces/run-1.jsonl`, model phân loại đúng `issue = "sai_mon"` nhưng đưa `"trà đào"` (món nhận nhầm) vào `items` thay vì `"Trà sữa trân châu"` (món đã đặt bị giao sai), khiến `compute_remedy` trả `tu_choi · 0đ`.
 - **Hướng cải tiến cho Lượt 2 (CP4):** làm rõ trong `SYSTEM_CLASSIFY` rằng với `sai_mon` chỉ trích tên món khách **đã đặt** trong đơn, không ghi món nhận nhầm; ghi thay đổi vào `spec.md` §10 changelog rồi chạy `eval/run-2.csv`.
+- **Lượt 2 (`run-2@20261128-102345`):** B02 đã đúng (hoàn 35.000đ), câu `thuong` 6/6 → **đạt chuẩn**. Có 2 câu `kho` tệ đi: **B07** (món không có trong đơn) và **B27** (không dấu, viết tắt) bị phân loại `chua_ro`, nên hệ thống hỏi lại dù khách đã nêu tên món. Ba điều kiện cứng vẫn 100%.
+- Đọc trace còn thấy lỗi ở lời nhắn mà bộ chấm không bắt (giải thích sai ở B21, B25; từ chối không lý do ở B12, B13). Chi tiết: `eval/report.md`.
