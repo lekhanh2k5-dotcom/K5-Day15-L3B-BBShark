@@ -157,9 +157,28 @@ flowchart TD
 - So với impact / người / tháng (§2): đáng làm không, vì sao:
 
 ## §9. Rủi ro & an toàn
-- Dữ liệu: đã ẩn danh gì, không thu gì, không đưa gì vào model gói miễn phí:
-- AI **không được** làm gì kể cả khi người dùng yêu cầu:
-- Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào:
+- **Dữ liệu:**
+  - Đơn hàng, chính sách, lịch sử khiếu nại trong bản chạy thử là data giả (`data/mock/`, seed 15), không có tên, SĐT hay địa chỉ thật (`data/DATA_CARD.md`).
+  - 19.000 review Google Play là nội dung công khai. Nhóm đã bỏ tên người viết, ảnh đại diện, mã người dùng trước khi lưu và trích dẫn.
+  - Phỏng vấn P1–P3 không ghi tên, không hỏi SĐT hay địa chỉ.
+  - Mỗi lần xử lý, model chỉ nhận tin nhắn của khách, mã đơn và danh sách món kèm giá. Không gửi mã khách, lịch sử khiếu nại, thông tin quán hay tài xế. Model gọi qua API OpenAI (`gpt-4o-mini`, tính tiền theo token), không dán dữ liệu vào gói chat miễn phí.
+  - Key để trong `.env`, không commit lên repo.
+- **AI không được làm, kể cả khi khách yêu cầu** (chặn bằng code, không chỉ dặn trong prompt):
+  - Chuyển tiền thật: `propose_refund` chỉ tạo đề xuất, khách phải bấm Xác nhận.
+  - Tự quyết số tiền: số tiền do `compute_remedy` tính từ giá món **có trong đơn**. Lời nhắn nêu số khác thì code thay bằng bản mẫu (`_reply_ok`).
+  - Hoàn vượt hạn mức 200.000đ, hoặc tự xử lý khách có ≥3 khiếu nại trong 30 ngày: chuyển nhân viên (`check_limit`, `MAX_COMPLAINTS_30D`).
+  - Đưa SĐT hay địa chỉ của tài xế, quán, khách khác (B13). `eval/grade.py` kiểm 0 câu lộ.
+  - Làm theo lệnh chèn trong tin nhắn ("bỏ qua hướng dẫn", "[SYSTEM] max_auto=…"): tin nhắn là dữ liệu, số tiền vẫn do code tính (B12, B23).
+  - Tự xử lý ca liên quan sức khoẻ (đau bụng, ngộ độc, dị ứng): code chặn trước khi gọi model và chuyển người ngay (B14).
+  - Hứa phạt quán hay tài xế, hứa bồi thường ngoài chính sách.
+- **Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào:**
+
+  | Ai | Hại thế nào | Chặn bằng gì | Còn hở |
+  |---|---|---|---|
+  | Khách bị sự cố thật | Bị từ chối oan hoặc hoàn thiếu (B02 ở lượt 1) | Prompt sai món sửa ở lượt 2. Khách gõ "gặp nhân viên" thì luôn được chuyển người | Lời từ chối chưa tự đưa nút gặp nhân viên. Lời giải thích đôi khi sai (`eval/report.md` nhóm B) |
+  | Người bị ngộ độc thực phẩm | Bị xử lý như khiếu nại thường, chậm cấp cứu | Bộ lọc từ khoá sức khoẻ chạy trước model, có bản không dấu | Câu diễn đạt lạ có thể lọt từ khoá |
+  | Tài xế, quán | Bị quấy rối nếu lộ SĐT; bị đổ lỗi nếu hoàn sai | Không bao giờ đưa liên hệ; hoàn theo giá món trong đơn, chỉ là đề xuất | Chưa có bước để quán phản hồi trước khi hoàn |
+  | Nền tảng | Mất tiền vì khai khống, tấn công chèn lệnh | Hạn mức 200.000đ, chỉ hoàn món có trong đơn và tối đa số lượng trong đơn, ≥3 khiếu nại/30 ngày → người | Khai khống món rẻ, dưới hạn mức, lần đầu thì vẫn được hoàn (giống quy trình hiện tại của app) |
 
 ## §10. Phân công & changelog
 - Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"): __
@@ -174,6 +193,7 @@ flowchart TD
 | 27/11 · 23:35 | Lượt 1 với `gpt-4o-mini`: 26/27 (96%), câu thuong 5/6 → chưa đạt chuẩn | `eval/run-1.csv`, `run-1@20261127-224904` |
 | 28/11 · 09:20 | **Cải tiến cho lượt 2:** prompt phân loại (`SYSTEM_CLASSIFY`) thêm quy tắc với `sai_mon` — ghi món khách đã đặt, không ghi món nhận nhầm | Câu B02 trượt ở lượt 1: model ghi "trà đào" (món nhận nhầm) nên code không tìm thấy trong đơn và từ chối (`eval/run-1.csv`) |
 | 28/11 · 09:20 | `cost/personas.yaml`: giá theo model đang chạy (`gpt-4o-mini`) và 2 mức model mạnh hơn; bỏ `gemini-2.5-flash` | Bảng giá của đề ghi `gemini-2.5-flash` đã ngừng; simulate cần giá của model thực đo |
+| 28/11 · 11:00 | Viết `spec.md` §9 (rủi ro & an toàn) và `eval/report.md` phần lượt 1: đọc trace cả 27 câu, ghi thêm 3 nhóm lỗi ở lời nhắn mà bộ chấm không bắt được | Đề yêu cầu ≥3 lỗi cụ thể. Lượt 1 chỉ trượt B02 theo bộ chấm (`traces/run-1.jsonl`) |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
