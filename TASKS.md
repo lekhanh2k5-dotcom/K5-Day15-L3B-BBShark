@@ -37,7 +37,24 @@
 
 ## Đoàn Công Hải · số liệu chi phí, slide trang 1
 
-1. Tìm **số người dùng thật có nguồn (link)** cho 3 kịch bản thấp · cơ sở · cao ở `cost/cost-estimate.md`: số người dùng app giao đồ ăn, số đơn / tháng, tỉ lệ đơn có sự cố hoặc có khiếu nại. Không có nguồn thì ghi *(tự ước tính)*. Gửi Khánh trước 11:00.
+1. **Số liệu quy mô thật cho phần chi phí** → file mới `cost/scale-sources.md`, nộp PR trước 11:00.
+   - **Để làm gì:** `python run.py simulate` chỉ cho biết chi phí **một** lần xử lý khiếu nại. Phần chi phí (R6, 12 điểm) phải phóng lên **quy mô thật** theo 3 kịch bản thấp · cơ sở · cao. Đề yêu cầu track D lấy quy mô từ **số người dùng của sản phẩm, nguồn công khai có link** (không dùng số 700 học viên của khoá).
+   - **Công thức Khánh sẽ dùng:**
+     `Số khiếu nại / tháng = số đơn đồ ăn / tháng × tỉ lệ đơn có sự cố × tỉ lệ người có báo sự cố`
+     `Chi phí / tháng = số khiếu nại / tháng × chi phí / task thành công (từ simulate)`
+   - **Cần tìm:**
+
+     | Số liệu | Đã có | Gợi ý nguồn |
+     |---|---|---|
+     | Số đơn đồ ăn qua app / tháng ở Việt Nam | Ken Research ≈ 29,2 triệu đơn/tháng (`spec.md` §2) — tìm **thêm 1 nguồn** để đối chiếu | Momentum Works, Statista, Q&Me, Decision Lab, báo chí (VnExpress, CafeF, Tuổi Trẻ) |
+     | Số người dùng / thị phần từng app (ShopeeFood, GrabFood, be, Xanh SM) | chưa | Báo cáo thị trường, báo chí, công bố của hãng — dùng để dựng kịch bản "chỉ một app" (thấp) và "cả thị trường" (cao) |
+     | Tỉ lệ đơn có sự cố (thiếu / sai món, trễ, hỏng) | chưa | Báo cáo, khảo sát công khai; hiếm có — không có thì ghi *(tự ước tính)* |
+     | Tỉ lệ người gặp sự cố có báo / khiếu nại | chưa | Như trên. Có thể tham khảo phỏng vấn P1–P3 (n = 3, chỉ tham khảo) |
+
+   - **Cách ghi trong `cost/scale-sources.md`** — một bảng, mỗi dòng một số liệu:
+     `Số liệu | Giá trị | Năm / kỳ của số liệu | Link nguồn | Ngày xem | Ghi chú (cách tính, nếu tự quy đổi)`
+     Sau bảng, đề xuất giá trị cho 3 kịch bản (thấp · cơ sở · cao) kèm 1 dòng lý do mỗi kịch bản.
+   - **Luật:** mỗi số phải có link + ngày xem, hoặc ghi rõ *(tự ước tính)* kèm lý do. Không lấy số từ trang không mở được, không lấy từ đoạn trích của công cụ tìm kiếm, không dùng số khảo sát của nhóm. Quy đổi (vd năm → tháng) thì ghi cách tính.
 2. Soạn **nội dung slide trang 1** (người dùng & nỗi đau) gửi Quang Anh: số review, kết quả nhãn 30/100, 1–2 câu nguyên văn từ P1–P3. Hạn 11:30.
 3. Sửa `reflection/doan-cong-hai.md`: bỏ phần khảo sát, sửa câu "gán nhãn tay dòng 1–50" cho khớp sự thật (AI gán, Hải kiểm). Nộp PR. Hạn 23:59.
 
