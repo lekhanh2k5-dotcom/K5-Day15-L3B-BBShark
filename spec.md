@@ -170,7 +170,7 @@ flowchart TD
 
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
-|  |  |  |
+| 27/11 · CP3 | Quang Anh bổ sung giới hạn của ba bộ data giả và chuẩn bị [câu hỏi phỏng vấn](evidence/interviews/huong-dan-d1.md). Chạy thử cấu hình chi phí 10 phiên, seed 42. | [Rà dữ liệu](data/DATA_CARD.md) cho thấy thiếu ca sát ngưỡng 30 phút và 3 khiếu nại. Cả 10 phiên thử thuộc persona báo một lần, dùng model giả với token bằng 0. Chưa có số đo chi phí. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
