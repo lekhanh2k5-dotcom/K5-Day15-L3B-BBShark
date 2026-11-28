@@ -194,6 +194,7 @@ flowchart TD
 | 28/11 · 09:20 | **Cải tiến cho lượt 2:** prompt phân loại (`SYSTEM_CLASSIFY`) thêm quy tắc với `sai_mon` — ghi món khách đã đặt, không ghi món nhận nhầm | Câu B02 trượt ở lượt 1: model ghi "trà đào" (món nhận nhầm) nên code không tìm thấy trong đơn và từ chối (`eval/run-1.csv`) |
 | 28/11 · 09:20 | `cost/personas.yaml`: giá theo model đang chạy (`gpt-4o-mini`) và 2 mức model mạnh hơn; bỏ `gemini-2.5-flash` | Bảng giá của đề ghi `gemini-2.5-flash` đã ngừng; simulate cần giá của model thực đo |
 | 28/11 · 11:00 | Viết `spec.md` §9 (rủi ro & an toàn) và `eval/report.md` phần lượt 1: đọc trace cả 27 câu, ghi thêm 3 nhóm lỗi ở lời nhắn mà bộ chấm không bắt được | Đề yêu cầu ≥3 lỗi cụ thể. Lượt 1 chỉ trượt B02 theo bộ chấm (`traces/run-1.jsonl`) |
+| 28/11 · soạn slide CP4 | Quang Anh chuẩn bị bản nháp 8 trang và khai báo hỗ trợ của Codex. | Đối chiếu lượt 1 với lượt 2 và mô phỏng 50 phiên ở commit `5a8f70d` của Lộc; ghi nguồn quy mô ở commit `f9e7e37` của Hải. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

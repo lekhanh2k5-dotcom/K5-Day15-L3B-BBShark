@@ -16,8 +16,8 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 | Sinh data `synthetic` | Claude Code | Viết `data/make_mock_data.py` | Seed 15 · kiểm tay 8 đơn viết tay A101–A108 và đáp án các câu thử dùng chúng (`eval/check_decisions.py`) | Khánh |
 | Chấm cột `pass` | Không dùng LLM | — | Chấm bằng code: `eval/grade.py` | — |
 | `spec.md` §1, §4, §7, `evidence/data-mining.md`, `data/DATA_CARD.md`, `eval/metric_spec.yaml` | Claude Code | Soạn bản đầu | Khánh duyệt; cả nhóm duyệt chuẩn "đạt" 19:00 27/11 | Khánh |
-| `spec.md` §0, §2, §3, `cost/` | *Quang Anh khai* | *Quang Anh khai* | Ảnh app chụp từ tài khoản của Quang Anh, đã cắt phần tên tài khoản | Quang Anh |
+| `spec.md` §0, §2, §3, `cost/` | Codex | Đối chiếu ảnh với luồng ShopeeFood, tìm nguồn cho bảng impact và so sánh dịch vụ, chuẩn bị cấu hình persona và chạy thử 10 phiên | Quang Anh cung cấp ảnh từ tài khoản của mình. Bản nộp dùng hai ảnh không hiện tên tài khoản. | Quang Anh |
 | `spec.md` §5, §6, sơ đồ `docs/ai-architecture.svg` | Antigravity | Soạn bảng 9 kịch bản khó/tấn công ở §5, 4 đường đi trải nghiệm ở §6 theo `benchmark.csv` và tạo sơ đồ vector `docs/ai-architecture.svg` | Lộc đối chiếu khớp 1-1 với luồng `agent.py`, 7 công cụ `tools.py` và 27 câu thử, kiểm XML hợp lệ và merge ở PR #11 | Lộc |
-| Slide, văn bản | *chưa làm* | | | Quang Anh |
+| Slide, văn bản | Codex | Dựng bản PDF 8 trang từ bằng chứng, hai lượt đánh giá và kết quả mô phỏng 50 phiên của nhóm | Bản nháp đang chờ Quang Anh duyệt nội dung, lời demo và số liệu trước khi nộp | Quang Anh |
 
 **Không dùng AI để:** tạo người được phỏng vấn, trích dẫn, câu trả lời khảo sát; sửa kết quả các lượt đã chạy (`eval/run-*.csv`, `cost/simulate-*.csv`, `traces/`).
