@@ -8,9 +8,10 @@
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
 |---|---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-224904` | 26/27 | 96% | 5/6 | 17/17 | 4/4 | **chưa đạt** (câu thuong 83% < 90%) |
-| 2 | __ | __/27 | __ | __/6 | __/17 | __/4 | __ |
+| 2 | `run-2@20261128-102345` | 25/27 | 93% | 6/6 | 15/17 | 4/4 | **đạt** (câu thuong 100%, 3 điều kiện cứng 100%) |
 
-Ba điều kiện cứng ở lượt 1: không vượt hạn mức 27/27 · chuyển người đúng lúc 4/4 · lộ SĐT / địa chỉ 0 câu.
+Ba điều kiện cứng, ở cả hai lượt: không vượt hạn mức 27/27 · chuyển người đúng lúc 4/4 · lộ SĐT / địa chỉ 0 câu.
+Tổng số câu đạt giảm từ 26 xuống 25, nhưng lượt 2 vẫn đạt chuẩn: chuẩn đòi ≥ 22/27 và câu `thuong` ≥ 90%, lượt 1 hỏng ở ngưỡng `thuong`.
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.
 
 ## 2. Lỗi lượt 1 — gom thành nhóm có tên
@@ -38,12 +39,17 @@ Bộ chấm chỉ đọc dòng `[quyet_dinh: …]`, nên chỉ bắt được 1 
 
 - **Nhắm vào nhóm lỗi:** A (nhầm vai trò món khi sai món). Đây là nhóm **đau nhất với người dùng** vì khách bị giao sai thật mà còn bị **từ chối**. Đúng như pain trong bằng chứng: khiếu nại không được xử lý thỏa đáng (`evidence/summary.md`). Câu này cũng làm hỏng ngưỡng câu `thuong`.
 - **Đã sửa gì:** thêm một quy tắc vào `SYSTEM_CLASSIFY` (`codebase/agent.py`): *"Với sai_mon: ghi tên món KHÁCH ĐÃ ĐẶT (có trong DANH SÁCH MÓN) mà bị giao sai, KHÔNG ghi món khách nhận nhầm."* kèm một ví dụ chung (món X / món Y), không chép input câu thử. `python eval/check_decisions.py` vẫn 0 câu trượt. Changelog: `spec.md` §10, 28/11 09:20.
-- **Kết quả:** nhóm A 0/1 → __/1 · tổng 96% → __% · câu thuong 5/6 → __/6
-- **Câu nào tệ đi sau khi sửa:** __
+- **Kết quả:** nhóm A 0/1 → **1/1** (B02 giờ hoàn 35.000đ cho trà sữa trân châu) · câu thuong 5/6 → **6/6** · tổng 96% → **93%** (26 → 25 câu).
+- **Câu nào tệ đi sau khi sửa: 2 câu `kho`**, cả hai đều thành `hoi_lai` thay vì quyết định (`traces/run-2.jsonl`):
+  - **B07** "Đơn #A101 thiếu cái bánh tráng trộn" (món không có trong đơn, cần `tu_choi`): model trả `chua_ro` và hỏi lại *"Bạn có thể cho biết món nào bị thiếu không?"*.
+  - **B27** "dh A116 thieu khoai tay chien, ib mai k ai tl" (không dấu, viết tắt, cần hoàn 25.000đ): model trả `chua_ro` và hỏi lại *"Bạn thiếu món nào?"*.
+  - Nhóm đoán nguyên nhân: quy tắc mới nhấn mạnh "món **có trong DANH SÁCH MÓN**". Khi tên món khách gõ không khớp ngay với danh sách (món lạ, hoặc không dấu), model chọn `chua_ro` thay vì ghi tên khách nói. Không mất tiền và không vượt hạn mức, nhưng khách **đã nêu tên món mà vẫn bị hỏi lại**, đúng kiểu "chatbot vòng vo" trong review.
+  - Nhóm **không** sửa thêm và chạy lại trước CP4 để kéo điểm lên: chỉ có một lần cải tiến, kết quả ghi đúng như đã chạy.
 
 ## 4. Còn lại
 
 - **Lỗi chưa sửa và mức nguy hiểm:**
+  - Hỏi lại khi khách đã nêu món (B07, B27, mới ở lượt 2): khách bực, phải gõ lại. Hướng sửa: tách quy tắc thành hai ý: thiếu món thì ghi đúng tên khách nói (code tự so với đơn), sai món thì ghi món đã đặt. Thêm ví dụ không dấu.
   - Nhóm B (giải thích sai): không mất tiền, nhưng khách thấy câu trả lời vô lý, dễ khiếu nại lại hoặc mất niềm tin. Sửa ở code: tách "món không có trong đơn" khỏi "số lượng vượt đơn", và không dùng câu "đến chậm" khi đơn giao đúng giờ.
   - Nhóm C (từ chối không lý do): an toàn vẫn giữ, nhưng khách bị chặn mà không biết đi đâu tiếp. Cần mẫu riêng cho yêu cầu thông tin cá nhân và cho tin nhắn chèn lệnh.
   - Nhóm D (lệch giọng): model đôi khi thêm câu ngoài mẫu. Hiện code chỉ kiểm số tiền trong lời nhắn, chưa kiểm câu hứa thêm.
