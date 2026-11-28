@@ -6,8 +6,8 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 
 | Việc | Công cụ AI | AI làm gì | Người kiểm/sửa gì | Ai phụ trách |
 |---|---|---|---|---|
-| Code bản chạy thử: `agent.py`, `tools.py` | Claude Code | Viết workflow, 7 công cụ, chặn an toàn, kiểm số tiền trong lời nhắn | Khánh chạy `run.py`, `eval/check_decisions.py` (27/27); Lộc dọn bản trùng sau merge (PR #5) và thêm bắt từ khoá không dấu — *Lộc khai công cụ đã dùng* | Khánh · Lộc |
-| Nối model `ai.py` | Claude Code (bản đầu) · *Lộc khai* | Viết lời gọi Gemini / OpenRouter / Groq / OpenAI / Claude / Ollama bằng thư viện chuẩn | Lộc gộp bản cuối (PR #5) — *Lộc khai* | Lộc |
+| Code bản chạy thử: `agent.py`, `tools.py` | Claude Code · Antigravity | Viết workflow, 7 công cụ, chặn an toàn, kiểm số tiền trong lời nhắn; hỗ trợ dọn trùng merge và bổ sung lọc không dấu | Khánh chạy `run.py`, `eval/check_decisions.py` (27/27); Lộc rà soát, dọn bản trùng sau merge (PR #11), bổ sung bắt `SAFETY`/`WANT_HUMAN` không dấu (không bắt nhầm món "sườn non") và chạy smoke test kiểm chứng | Khánh · Lộc |
+| Nối model `ai.py` | Claude Code (bản đầu) · Antigravity | Viết và gộp lời gọi Gemini / OpenRouter / Groq / OpenAI / Claude / Ollama bằng thư viện chuẩn (`temperature=0`) | Lộc gộp bản cuối (PR #11), tự tạo `.env`, chạy `eval --try`, chạy thật Lượt 1 (`run-1`), Lượt 2 (`run-2`), `simulate` trên `gpt-4o-mini` và quay video kiểm chứng | Lộc |
 | Prompt / thiết kế lời gọi mô hình | Claude Code | Soạn prompt phân loại (JSON) và prompt viết lời nhắn | Khánh duyệt; sẽ đánh giá qua lượt 1 | Khánh |
 | Đào data: script cào, lọc, thống kê review | Claude Code | Viết `scrape_reviews.py`, `review_stats.py`, cách đếm, bảng số | Khánh kiểm số đếm và sửa bộ từ khoá bị đếm thừa ("đổ" khớp "đổi") | Khánh |
 | Gán nhãn review | AI *(Khánh ghi tên công cụ)* · Antigravity | AI gán nhãn trước dòng 1–10, 51–100 (Khánh) và dòng 1–50 (Hải) kèm lý do | **Khánh kiểm 60/60 dòng** (`evidence/labels/khanh.csv`); soát lại theo định nghĩa đã ghi trước, sửa 3 dòng (51, 64, 88); số dòng sửa ở lần kiểm đầu: __ · **Hải kiểm 50/50 dòng** 1–50 (`evidence/label_sample.csv`); độ khớp 10 dòng đầu: 10/10 | Khánh · Hải |
@@ -17,7 +17,7 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 | Chấm cột `pass` | Không dùng LLM | — | Chấm bằng code: `eval/grade.py` | — |
 | `spec.md` §1, §4, §7, `evidence/data-mining.md`, `data/DATA_CARD.md`, `eval/metric_spec.yaml` | Claude Code | Soạn bản đầu | Khánh duyệt; cả nhóm duyệt chuẩn "đạt" 19:00 27/11 | Khánh |
 | `spec.md` §0, §2, §3, `cost/` | *Quang Anh khai* | *Quang Anh khai* | Ảnh app chụp từ tài khoản của Quang Anh, đã cắt phần tên tài khoản | Quang Anh |
-| `spec.md` §5, §6, sơ đồ `docs/ai-architecture.svg` | *Lộc khai* | *Lộc khai* | *Lộc khai* | Lộc |
+| `spec.md` §5, §6, sơ đồ `docs/ai-architecture.svg` | Antigravity | Soạn bảng 9 kịch bản khó/tấn công ở §5, 4 đường đi trải nghiệm ở §6 theo `benchmark.csv` và tạo sơ đồ vector `docs/ai-architecture.svg` | Lộc đối chiếu khớp 1-1 với luồng `agent.py`, 7 công cụ `tools.py` và 27 câu thử, kiểm XML hợp lệ và merge ở PR #11 | Lộc |
 | Slide, văn bản | *chưa làm* | | | Quang Anh |
 
 **Không dùng AI để:** tạo người được phỏng vấn, trích dẫn, câu trả lời khảo sát; sửa kết quả các lượt đã chạy (`eval/run-*.csv`, `cost/simulate-*.csv`, `traces/`).

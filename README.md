@@ -133,5 +133,5 @@ Nhóm dùng coding agent (Claude Code) để viết phần lớn code bản ch�
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · video gọi AI thật (CP3): https://drive.google.com/file/d/1Wfx5w4hBUhkKoAf8ZHMJGxZXZQu1vv6T/view?usp=sharing |
+| 7 | Slide + demo + video dự phòng | `demo-slides.pdf` ở thư mục gốc · video gọi AI thật (CP3): https://drive.google.com/file/d/1Wfx5w4hBUhkKoAf8ZHMJGxZXZQu1vv6T/view?usp=sharing · **video demo dự phòng (CP4):** https://drive.google.com/file/d/1JID7Ll5N2ygvs8WOVZBeqQ-KNqgBTY6K/view?usp=sharing |
 | + | *Bonus:* người dùng thử | `validation/log.md` |
