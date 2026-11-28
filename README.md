@@ -101,7 +101,7 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 ## Dùng AI vào việc gì
 
-Nhóm dùng coding agent (Claude Code) để viết phần lớn code bản chạy thử (`agent.py`, `tools.py`, bộ chấm, script cào và thống kê review, script sinh data giả), soạn bộ câu thử và các mục `spec.md` §1, §4, §7; Khánh duyệt và chạy kiểm từng phần. AI gán nhãn trước 60/100 review, Khánh kiểm lại từng dòng; Hải gán tay 50 dòng không dùng AI để đo độ khớp. Phỏng vấn, khảo sát và câu trả lời của người dùng không do AI tạo. Chi tiết từng phần, kể cả phần của các thành viên khác: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
+Nhóm dùng coding agent (Claude Code) để viết phần lớn code bản chạy thử (`agent.py`, `tools.py`, bộ chấm, script cào và thống kê review, script sinh data giả), soạn bộ câu thử và các mục `spec.md` §1, §4, §7; Khánh duyệt và chạy kiểm từng phần. AI gán nhãn trước 60/100 review, Khánh kiểm lại từng dòng; Hải gán tay 50 dòng không dùng AI để đo độ khớp. Nội dung phỏng vấn và lời người dùng không do AI tạo. Chi tiết từng phần, kể cả phần của các thành viên khác: [docs/ai-usage.md](docs/ai-usage.md). Coding agent đọc [AGENTS.md](AGENTS.md).
 
 ## File mẫu — điền ở bước nào
 
