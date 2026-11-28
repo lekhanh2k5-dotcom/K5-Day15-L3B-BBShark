@@ -1,4 +1,90 @@
-# BBShark · Phân công CP3 (hạn 10:00 Thứ Bảy 28/11)
+# BBShark · Phân công CP4 (hạn 14:30 Thứ Bảy 28/11)
+
+> CP3 đã nộp. CP4 là bản dùng để **xét giải** (cùng phần demo).
+> Vẫn KHÔNG sửa: `spec.md` §7, `eval/metric_spec.yaml`, đáp án (`expected`) câu thử cũ, `data/mock/`, `eval/run-1.csv`, `traces/run-1.jsonl`.
+> Lượt 2 chỉ sửa **hệ thống** (prompt, code), chạy **trọn 27 câu**. Không bỏ câu trượt, không chạy lại nhiều lần để chọn kết quả đẹp.
+> Sửa `codebase/` xong → `python eval/check_decisions.py` phải ra 0 câu trượt.
+> Mỗi việc: nhánh mới từ `main` → commit → push → pull request. Khánh merge.
+
+**CP4 cần:** lượt 1 → lượt 2 · chi phí / task thành công + 3 kịch bản (kèm tên model) · `spec.md` đủ §0–§9 · `demo-slides.pdf` ở thư mục gốc + link video demo dự phòng · phần chưa xong.
+
+## Lịch
+
+| Giờ | Việc |
+|---|---|
+| 09:30 | Khánh xong sửa prompt `sai_mon` + `cost/personas.yaml` |
+| 10:00–10:30 | Lộc chạy lượt 2 + simulate 50 phiên |
+| 10:30–12:00 | Khánh viết báo cáo đánh giá, chi phí và mời người dùng thử · Quang Anh làm slide nháp · Hải tìm số liệu chi phí |
+| 12:00–13:30 | Hoàn thiện slide, xuất PDF · Lộc quay video dự phòng |
+| 13:30–14:15 | Cả nhóm tập demo 2 phút, ai cũng nói được 1 phần |
+| 14:30 | Khánh nộp CP4 |
+
+## Hồ An Lộc · lượt 2, chi phí, video dự phòng
+
+1. Sau khi PR sửa prompt `sai_mon` được merge: `git pull`, rồi `python run.py eval` → `eval/run-2.csv` + `traces/run-2.jsonl` → `python eval/grade.py eval/run-2.csv` → `python run.py score eval/run-2.csv`. Commit cả hai file. Cùng model với lượt 1 (`gpt-4o-mini`).
+2. Sau khi `cost/personas.yaml` được sửa: `python run.py simulate` (≥50 phiên, model thật) → `cost/simulate-N.csv` + `cost/simulate-N-summary.md`. Commit.
+3. Quay **video demo dự phòng** (1–2 phút): 1 trường hợp thường + 1 trường hợp khó (vd tấn công chèn lệnh, hoặc khiếu nại vượt hạn mức → chuyển nhân viên). Drive "Bất kỳ ai có đường liên kết". Gửi link cho Khánh.
+4. Điền các ô ghi "khai" của mình trong `docs/ai-usage.md`.
+5. Hạn: lượt 2 + simulate trước 10:30; video trước 13:30.
+
+## Nguyễn Quốc Quang Anh · slide
+
+1. **Slide 8 trang** theo guide 5.1, mỗi trang ≥1 con số / trích dẫn có nguồn / kết quả đo. Mẫu: `slides/outline.md`.
+   1) Người dùng & nỗi đau (Hải soạn nội dung) · 2) Vì sao chọn bài (bảng impact `spec.md` §2) · 3) Giải pháp (lát cắt, sơ đồ `docs/ai-architecture.svg`, AI tự làm đến đâu) · 4) Demo live · 5) Đánh giá (lượt 1 → lượt 2, lấy từ `eval/README.md`) · 6) Chi phí (lấy từ `cost/cost-estimate.md`) · 7) Kết luận go / iterate / stop · 8) Nếu có thêm 1 tuần.
+   Xuất **`demo-slides.pdf` ở thư mục gốc repo**.
+2. Điền các ô ghi "khai" của mình trong `docs/ai-usage.md`.
+3. Hạn: slide nháp 12:00, PDF 13:30.
+
+## Đoàn Công Hải · số liệu chi phí, slide trang 1
+
+1. **Số liệu quy mô thật cho phần chi phí** → file mới `cost/scale-sources.md`, nộp PR trước 11:00.
+   - **Để làm gì:** `python run.py simulate` chỉ cho biết chi phí **một** lần xử lý khiếu nại. Phần chi phí (R6, 12 điểm) phải phóng lên **quy mô thật** theo 3 kịch bản thấp · cơ sở · cao. Đề yêu cầu track D lấy quy mô từ **số người dùng của sản phẩm, nguồn công khai có link** (không dùng số 700 học viên của khoá).
+   - **Công thức Khánh sẽ dùng:**
+     `Số khiếu nại / tháng = số đơn đồ ăn / tháng × tỉ lệ đơn có sự cố × tỉ lệ người có báo sự cố`
+     `Chi phí / tháng = số khiếu nại / tháng × chi phí / task thành công (từ simulate)`
+   - **Cần tìm:**
+
+     | Số liệu | Đã có | Gợi ý nguồn |
+     |---|---|---|
+     | Số đơn đồ ăn qua app / tháng ở Việt Nam | Ken Research ≈ 29,2 triệu đơn/tháng (`spec.md` §2) — tìm **thêm 1 nguồn** để đối chiếu | Momentum Works, Statista, Q&Me, Decision Lab, báo chí (VnExpress, CafeF, Tuổi Trẻ) |
+     | Số người dùng / thị phần từng app (ShopeeFood, GrabFood, be, Xanh SM) | chưa | Báo cáo thị trường, báo chí, công bố của hãng — dùng để dựng kịch bản "chỉ một app" (thấp) và "cả thị trường" (cao) |
+     | Tỉ lệ đơn có sự cố (thiếu / sai món, trễ, hỏng) | chưa | Báo cáo, khảo sát công khai; hiếm có — không có thì ghi *(tự ước tính)* |
+     | Tỉ lệ người gặp sự cố có báo / khiếu nại | chưa | Như trên. Có thể tham khảo phỏng vấn P1–P3 (n = 3, chỉ tham khảo) |
+
+   - **Cách ghi trong `cost/scale-sources.md`** — một bảng, mỗi dòng một số liệu:
+     `Số liệu | Giá trị | Năm / kỳ của số liệu | Link nguồn | Ngày xem | Ghi chú (cách tính, nếu tự quy đổi)`
+     Sau bảng, đề xuất giá trị cho 3 kịch bản (thấp · cơ sở · cao) kèm 1 dòng lý do mỗi kịch bản.
+   - **Luật:** mỗi số phải có link + ngày xem, hoặc ghi rõ *(tự ước tính)* kèm lý do. Không lấy số từ trang không mở được, không lấy từ đoạn trích của công cụ tìm kiếm. Quy đổi (vd năm → tháng) thì ghi cách tính.
+2. Soạn **nội dung slide trang 1** (người dùng & nỗi đau) gửi Quang Anh: số review, kết quả nhãn 30/100, 1–2 câu nguyên văn từ P1–P3. Hạn 11:30.
+3. Sửa `reflection/doan-cong-hai.md`: bỏ phần khảo sát, sửa câu "gán nhãn tay dòng 1–50" cho khớp sự thật (AI gán, Hải kiểm). Nộp PR. Hạn 23:59.
+
+## Lê Ngọc Khánh (đội trưởng) · cải tiến, báo cáo, người dùng thử, nộp bài
+
+1. Sửa prompt phân loại cho `sai_mon` (ghi món đã đặt, không ghi món nhận nhầm) — cải tiến cho lượt 2.
+2. Sửa `cost/personas.yaml`: thêm giá `gpt-4o-mini` (model đang chạy) và một model mạnh hơn; bỏ `gemini-2.5-flash` (bảng giá của đề ghi đã ngừng).
+3. **Người dùng thử (bonus +5)** → `validation/log.md`: mời 3–5 bạn **ngoài nhóm** gõ thử khiếu nại vào bản chạy thử (`python run.py` trên máy Khánh với key tự chuẩn bị; gõ tin nhắn sau dấu `>`, Enter 2 lần để thoát). Đưa họ bảng đơn có sẵn để tự viết khiếu nại:
+
+   | Mã đơn | Món trong đơn |
+   |---|---|
+   | A101 | Trà sữa trân châu 35k · Trà đào cam sả 40k · Bánh flan 15k |
+   | A102 | Bún bò đặc biệt ×4 · Bún bò Huế ×4 · Chả cua thêm |
+   | A104 | Combo gà rán 2 miếng · Pepsi (giao trễ 45 phút) |
+   | A106 | Trà sữa trân châu · Bánh flan ×2 |
+   | A108 | Combo gà rán 2 miếng ×3 · Khoai tây chiên ×2 |
+
+   Ghi cho từng người: gõ gì · hệ thống trả gì · có hiểu, có tin không · muốn đổi gì · ≥1 câu nguyên văn. Không ghi tên. Hạn 12:30.
+4. `eval/report.md` (lượt 1 → lượt 2, ≥3 lỗi, đã sửa gì, lỗi còn lại) · cập nhật `eval/README.md`.
+5. `cost/cost-estimate.md` (3 kịch bản, chi phí / task thành công) · `spec.md` §8, §9.
+6. Merge PR, nhắc tiến độ 10:30 và 12:30 · nộp CP4 trước 14:30.
+
+## Sau CP4 (hạn 23:59)
+
+- Mọi thay đổi sau 14:30 ghi vào `spec.md` §10.
+- Mỗi người 1 file `reflection/<ten>.md` (mẫu `reflection/TEMPLATE.md`).
+
+---
+
+# (Đã xong) Phân công CP3 (hạn 10:00 Thứ Bảy 28/11)
 
 > CP2 đã nộp 19:30 Thứ Sáu 27/11. **Từ giờ KHÔNG sửa `spec.md` §7 và `eval/metric_spec.yaml`** (sửa → khối đánh giá 0 điểm).
 > Không sửa đáp án (`expected`) của câu thử đã có. Thêm câu mới thì được, ghi vào changelog `spec.md` §10.
