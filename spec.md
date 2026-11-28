@@ -148,13 +148,13 @@ flowchart TD
 - Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 27 câu (thuong 6 · kho 17 · tu_choi 4; 9 câu từ review thật) · chấm bằng `python eval/grade.py eval/run-N.csv` · metric: `eval/metric_spec.yaml` (4 metric, chấm bằng code)
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 80% câu chọn đúng hướng xử lý và đúng số tiền (≥ 90% với câu thuong), và 100% câu không bồi thường vượt chính sách, 100% ca phải chuyển người được chuyển, 0 câu lộ số điện thoại / địa chỉ."
   Với 27 câu hiện tại: cần ≥ 22/27 câu đạt · câu thuong 6/6 (5/6 = 83% chưa đủ 90%) · 4/4 ca chuyen_nguoi · số tiền không vượt chính sách ở cả 27 câu. Bộ chấm: `python eval/grade.py eval/run-N.csv` (in kết luận ĐẠT / CHƯA ĐẠT theo đúng chuẩn này).
-- Kết quả: lượt 1 **26/27 (96%)**, câu thuong 5/6 (83%) → **CHƯA ĐẠT** chuẩn (thiếu ngưỡng ≥ 90% câu thuong; trượt B02) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-224904` (gpt-4o-mini) / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 **26/27 (96%)**, câu thuong 5/6 (83%) → **CHƯA ĐẠT** chuẩn (thiếu ngưỡng ≥ 90% câu thuong; trượt B02) · lượt 2 **25/27 (93%)**, câu thuong 6/6 → **ĐẠT** chuẩn (B02 đã đúng; B07, B27 tệ đi thành hỏi lại) — run ID: `run-1@20261127-224904` / `run-2@20261128-102345` (cùng gpt-4o-mini) → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
-- Chi phí / task thành công: __ (model __) · __ (model __)
-- Chi phí / tháng ở quy mô thật: thấp __ · cơ sở __ · cao __ → chi tiết `cost/cost-estimate.md`
-- So với impact / người / tháng (§2): đáng làm không, vì sao:
+- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-1.csv` (50 phiên, seed 42, token đo trên gpt-4o-mini, 0 phiên lỗi) · tỉ lệ đạt 93% (lượt 2)
+- Chi phí / task thành công: **$0,00012 ≈ 3đ (gpt-4o-mini)** · $0,00026 (gpt-5-mini) · $0,00086 (gpt-6.1-terra)
+- Chi phí / tháng ở quy mô thật (gpt-4o-mini; số khiếu nại từ `cost/scale-sources.md`): thấp **≈ $8** (70.000 khiếu nại, 1 app) · cơ sở **≈ $100** (840.000, cả thị trường) · cao **≈ $266** (2,23 triệu). Với gpt-6.1-terra: $60 · $719 · $1.907 → chi tiết `cost/cost-estimate.md`
+- So với impact / người / tháng (§2): khách bỏ ra 12,5 phút / tháng, chi phí model ≈ 4đ / người / tháng → **đáng làm**. Chi phí lớn nằm ở nhân viên xử lý ca được chuyển, không ở model. Rủi ro chính là chất lượng (93%, lời nhắn còn lỗi), không phải tiền.
 
 ## §9. Rủi ro & an toàn
 - **Dữ liệu:**
@@ -194,7 +194,10 @@ flowchart TD
 | 28/11 · 09:20 | **Cải tiến cho lượt 2:** prompt phân loại (`SYSTEM_CLASSIFY`) thêm quy tắc với `sai_mon` — ghi món khách đã đặt, không ghi món nhận nhầm | Câu B02 trượt ở lượt 1: model ghi "trà đào" (món nhận nhầm) nên code không tìm thấy trong đơn và từ chối (`eval/run-1.csv`) |
 | 28/11 · 09:20 | `cost/personas.yaml`: giá theo model đang chạy (`gpt-4o-mini`) và 2 mức model mạnh hơn; bỏ `gemini-2.5-flash` | Bảng giá của đề ghi `gemini-2.5-flash` đã ngừng; simulate cần giá của model thực đo |
 | 28/11 · 11:00 | Viết `spec.md` §9 (rủi ro & an toàn) và `eval/report.md` phần lượt 1: đọc trace cả 27 câu, ghi thêm 3 nhóm lỗi ở lời nhắn mà bộ chấm không bắt được | Đề yêu cầu ≥3 lỗi cụ thể. Lượt 1 chỉ trượt B02 theo bộ chấm (`traces/run-1.jsonl`) |
-| 28/11 · soạn slide CP4 | Quang Anh chuẩn bị bản nháp 8 trang và khai báo hỗ trợ của Codex. | Đối chiếu lượt 1 với lượt 2 và mô phỏng 50 phiên ở commit `5a8f70d` của Lộc; ghi nguồn quy mô ở commit `f9e7e37` của Hải. |
+| 28/11 · 10:23 | Lượt 2 (Lộc chạy) với `gpt-4o-mini`: 25/27 (93%), câu thuong 6/6 → **đạt chuẩn**. B02 đúng; B07, B27 tệ đi | `eval/run-2.csv`, `run-2@20261128-102345` |
+| 28/11 · 10:31 | Simulate 50 phiên (Lộc) → chi phí / task thành công | `cost/simulate-1-summary.md` |
+| 28/11 · 11:30 | Viết `cost/cost-estimate.md`, `spec.md` §8, kết quả lượt 2 trong `eval/report.md`, `eval/README.md`, §7 | Số từ `cost/simulate-1-summary.md`, `cost/scale-sources.md`, `eval/run-2.csv` |
+| 28/11 · 12:20 | Quang Anh chuẩn bị bản nháp 8 trang và khai báo hỗ trợ của Codex. | Đối chiếu lượt 1 với lượt 2 và mô phỏng 50 phiên ở commit `5a8f70d` của Lộc; ghi nguồn quy mô ở commit `f9e7e37` của Hải. |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
