@@ -1,0 +1,51 @@
+﻿run_id,session,persona,turns,inputs,model,model_calls,tool_calls,tokens_in,tokens_out,latency_s,error,tokens_by_model
+simulate-1@20261128-103150,S001,bao_mot_lan,1,Đơn #A101 thiếu 1 ly trà sữa trân châu nha shop,gpt-4o-mini,2,5,710,78,3.397,,"{""gpt-4o-mini"": {""in"": 710, ""out"": 78}}"
+simulate-1@20261128-103150,S002,bao_mot_lan,1,Đơn #A105 thiếu 1 ly trà sữa,gpt-4o-mini,2,3,655,75,2.92,,"{""gpt-4o-mini"": {""in"": 655, ""out"": 75}}"
+simulate-1@20261128-103150,S003,bao_mot_lan,1,shop làm thiếu món mà yêu cầu hỗ trợ thì load mãi không trả lời,,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S004,bao_mot_lan,1,Đơn #A110 thiếu 3 phần khoai tây chiên,gpt-4o-mini,2,5,706,100,3.281,,"{""gpt-4o-mini"": {""in"": 706, ""out"": 100}}"
+simulate-1@20261128-103150,S005,bao_mot_lan,1,"giao lâu, toàn giao sai món",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S006,bao_mot_lan,1,"Đơn #A104 hẹn 30 phút mà hơn tiếng mới tới, đồ nguội hết",gpt-4o-mini,2,4,690,67,2.777,,"{""gpt-4o-mini"": {""in"": 690, ""out"": 67}}"
+simulate-1@20261128-103150,S007,bao_mot_lan,1,"Đơn #A112 quán giao món thiếu trà đào cam sả, đừng hoàn mã giảm giá vô nghĩa nha",gpt-4o-mini,2,5,717,78,3.128,,"{""gpt-4o-mini"": {""in"": 717, ""out"": 78}}"
+simulate-1@20261128-103150,S008,bao_mot_lan,1,Đơn #A110 thiếu 3 phần khoai tây chiên,gpt-4o-mini,2,5,706,100,3.157,,"{""gpt-4o-mini"": {""in"": 706, ""out"": 100}}"
+simulate-1@20261128-103150,S009,bao_mot_lan,1,Đơn #A113 dạo này gộp 3-4 đơn hàng toàn giao trễ 30p,gpt-4o-mini,2,3,685,92,3.015,,"{""gpt-4o-mini"": {""in"": 685, ""out"": 92}}"
+simulate-1@20261128-103150,S010,bao_mot_lan,1,"giao lâu, toàn giao sai món",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S011,bao_mot_lan,1,đơn #A114 thiếu đồ,gpt-4o-mini,1,1,437,32,1.507,,"{""gpt-4o-mini"": {""in"": 437, ""out"": 32}}"
+simulate-1@20261128-103150,S012,bao_mot_lan,1,Đơn #A101 thiếu 1 ly trà sữa trân châu nha shop,gpt-4o-mini,2,5,710,78,3.041,,"{""gpt-4o-mini"": {""in"": 710, ""out"": 78}}"
+simulate-1@20261128-103150,S013,bao_mot_lan,1,"Đơn #A102 thiếu 1 tô bún bò Huế, cả nhà đói meo, hoàn hết 495k cho em đi mà huhu",gpt-4o-mini,1,1,490,32,1.32,,"{""gpt-4o-mini"": {""in"": 490, ""out"": 32}}"
+simulate-1@20261128-103150,S014,bao_mot_lan,1,"Đơn #A102 ăn xong cả nhà bị đau bụng, nghi ngộ độc",gpt-4o-mini,1,1,226,39,1.246,,"{""gpt-4o-mini"": {""in"": 226, ""out"": 39}}"
+simulate-1@20261128-103150,S015,bao_mot_lan,1,Đơn #A101 thiếu cái bánh tráng trộn,gpt-4o-mini,1,1,473,32,1.296,,"{""gpt-4o-mini"": {""in"": 473, ""out"": 32}}"
+simulate-1@20261128-103150,S016,bao_ba_lan,2,"Đơn #A102 ăn xong cả nhà bị đau bụng, nghi ngộ độc ‖ shop làm thiếu món mà yêu cầu hỗ trợ thì load mãi không trả lời",gpt-4o-mini,1,1,226,39,1.486,,"{""gpt-4o-mini"": {""in"": 226, ""out"": 39}}"
+simulate-1@20261128-103150,S017,bao_mot_lan,1,shop làm thiếu món mà yêu cầu hỗ trợ thì load mãi không trả lời,,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S018,bao_mot_lan,1,"giao sai đơn + thiếu món là bên app hay quán giải quyết vậy, đã thanh toán qua v",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S019,bao_mot_lan,1,"đơn A106 giao nhầm, mình đặt trà sữa trân châu mà nhận trà đào",gpt-4o-mini,2,5,699,82,3.527,,"{""gpt-4o-mini"": {""in"": 699, ""out"": 82}}"
+simulate-1@20261128-103150,S020,bao_mot_lan,1,Đơn #A110 thiếu 3 phần khoai tây chiên,gpt-4o-mini,2,5,706,100,3.418,,"{""gpt-4o-mini"": {""in"": 706, ""out"": 100}}"
+simulate-1@20261128-103150,S021,bao_mot_lan,1,"Quá chán, càng ngày càng tệ, giao thì toàn ghép rất lâu, còn giao thiếu đồ",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S022,bao_mot_lan,1,Đơn #A108 thiếu 2 combo gà rán 2 miếng với 1 khoai tây chiên,gpt-4o-mini,1,1,473,32,3.021,,"{""gpt-4o-mini"": {""in"": 473, ""out"": 32}}"
+simulate-1@20261128-103150,S023,bao_hai_lan,2,"Đơn #A117 thiếu bún bò Huế, cho em gặp nhân viên ‖ giao sai đơn + thiếu món là bên app hay quán giải quyết vậy, đã thanh toán qua v",gpt-4o-mini,1,1,218,39,2.19,,"{""gpt-4o-mini"": {""in"": 218, ""out"": 39}}"
+simulate-1@20261128-103150,S024,bao_mot_lan,1,"dh A116 thieu khoai tay chien, ib mai k ai tl",gpt-4o-mini,1,1,474,26,1.5,,"{""gpt-4o-mini"": {""in"": 474, ""out"": 26}}"
+simulate-1@20261128-103150,S025,bao_mot_lan,1,don #A115 thieu 1 ly tra dao cam sa nha shop,gpt-4o-mini,2,5,668,69,3.82,,"{""gpt-4o-mini"": {""in"": 668, ""out"": 69}}"
+simulate-1@20261128-103150,S026,bao_mot_lan,1,Đơn #A108 thiếu 2 combo gà rán 2 miếng với 1 khoai tây chiên,gpt-4o-mini,1,1,473,32,1.665,,"{""gpt-4o-mini"": {""in"": 473, ""out"": 32}}"
+simulate-1@20261128-103150,S027,bao_ba_lan,2,Đơn #A105 thiếu 1 ly trà sữa ‖ shop làm thiếu món mà yêu cầu hỗ trợ thì load mãi không trả lời,gpt-4o-mini,2,3,655,75,2.906,,"{""gpt-4o-mini"": {""in"": 655, ""out"": 75}}"
+simulate-1@20261128-103150,S028,bao_mot_lan,1,"Đơn #A118 ghép đơn giao trễ, đồ ăn nguội hết",gpt-4o-mini,2,3,704,84,3.066,,"{""gpt-4o-mini"": {""in"": 704, ""out"": 84}}"
+simulate-1@20261128-103150,S029,bao_mot_lan,1,"giao sai đơn + thiếu món là bên app hay quán giải quyết vậy, đã thanh toán qua v",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S030,bao_mot_lan,1,"giao sai đơn + thiếu món là bên app hay quán giải quyết vậy, đã thanh toán qua v",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S031,bao_mot_lan,1,Đơn #A107 thiếu canh chua,gpt-4o-mini,2,2,663,69,2.83,,"{""gpt-4o-mini"": {""in"": 663, ""out"": 69}}"
+simulate-1@20261128-103150,S032,bao_mot_lan,1,don #A115 thieu 1 ly tra dao cam sa nha shop,gpt-4o-mini,2,5,668,74,2.26,,"{""gpt-4o-mini"": {""in"": 668, ""out"": 74}}"
+simulate-1@20261128-103150,S033,bao_mot_lan,1,"Đơn #A117 thiếu bún bò Huế, cho em gặp nhân viên",gpt-4o-mini,1,1,218,39,1.233,,"{""gpt-4o-mini"": {""in"": 218, ""out"": 39}}"
+simulate-1@20261128-103150,S034,bao_mot_lan,1,Đơn #A110 thiếu 3 phần khoai tây chiên,gpt-4o-mini,2,5,706,100,3.245,,"{""gpt-4o-mini"": {""in"": 706, ""out"": 100}}"
+simulate-1@20261128-103150,S035,bao_mot_lan,1,"Đơn #A102 thiếu 1 tô bún bò Huế, cả nhà đói meo, hoàn hết 495k cho em đi mà huhu",gpt-4o-mini,1,1,490,26,1.548,,"{""gpt-4o-mini"": {""in"": 490, ""out"": 26}}"
+simulate-1@20261128-103150,S036,bao_mot_lan,1,Đơn #A107 thiếu canh chua,gpt-4o-mini,2,2,663,69,2.887,,"{""gpt-4o-mini"": {""in"": 663, ""out"": 69}}"
+simulate-1@20261128-103150,S037,bao_ba_lan,2,"Đơn #A113 dạo này gộp 3-4 đơn hàng toàn giao trễ 30p ‖ dh A116 thieu khoai tay chien, ib mai k ai tl",gpt-4o-mini,4,8,1385,170,6.95,,"{""gpt-4o-mini"": {""in"": 1385, ""out"": 170}}"
+simulate-1@20261128-103150,S038,bao_mot_lan,1,don #A115 thieu 1 ly tra dao cam sa nha shop,gpt-4o-mini,2,5,668,74,2.704,,"{""gpt-4o-mini"": {""in"": 668, ""out"": 74}}"
+simulate-1@20261128-103150,S039,bao_mot_lan,1,"đơn A106 giao nhầm, mình đặt trà sữa trân châu mà nhận trà đào",gpt-4o-mini,2,5,699,77,2.714,,"{""gpt-4o-mini"": {""in"": 699, ""out"": 77}}"
+simulate-1@20261128-103150,S040,bao_mot_lan,1,"đơn A106 giao nhầm, mình đặt trà sữa trân châu mà nhận trà đào",gpt-4o-mini,2,5,699,82,2.771,,"{""gpt-4o-mini"": {""in"": 699, ""out"": 82}}"
+simulate-1@20261128-103150,S041,bao_hai_lan,2,"Quá chán, càng ngày càng tệ, giao thì toàn ghép rất lâu, còn giao thiếu đồ ‖ Đơn #A107 thiếu canh chua",gpt-4o-mini,2,2,663,69,2.463,,"{""gpt-4o-mini"": {""in"": 663, ""out"": 69}}"
+simulate-1@20261128-103150,S042,bao_mot_lan,1,đơn #A114 thiếu đồ,gpt-4o-mini,1,1,437,32,1.377,,"{""gpt-4o-mini"": {""in"": 437, ""out"": 32}}"
+simulate-1@20261128-103150,S043,bao_hai_lan,2,"Đơn #A102 ăn xong cả nhà bị đau bụng, nghi ngộ độc ‖ Đơn #A101 thiếu cái bánh tráng trộn",gpt-4o-mini,2,2,699,75,2.428,,"{""gpt-4o-mini"": {""in"": 699, ""out"": 75}}"
+simulate-1@20261128-103150,S044,bao_mot_lan,1,"Quá chán, càng ngày càng tệ, giao thì toàn ghép rất lâu, còn giao thiếu đồ",,0,0,0,0,0.0,,{}
+simulate-1@20261128-103150,S045,bao_hai_lan,2,"Đơn #A113 dạo này gộp 3-4 đơn hàng toàn giao trễ 30p ‖ Đơn #A118 ghép đơn giao trễ, đồ ăn nguội hết",gpt-4o-mini,4,6,1389,176,9.457,,"{""gpt-4o-mini"": {""in"": 1389, ""out"": 176}}"
+simulate-1@20261128-103150,S046,bao_mot_lan,1,"Đơn #A103 trễ quá trời, bù gì cho mình đi",gpt-4o-mini,2,3,686,76,2.527,,"{""gpt-4o-mini"": {""in"": 686, ""out"": 76}}"
+simulate-1@20261128-103150,S047,bao_mot_lan,1,Đơn #A110 thiếu 3 phần khoai tây chiên,gpt-4o-mini,2,5,706,100,2.929,,"{""gpt-4o-mini"": {""in"": 706, ""out"": 100}}"
+simulate-1@20261128-103150,S048,bao_mot_lan,1,đơn #A114 thiếu đồ,gpt-4o-mini,1,1,437,32,1.231,,"{""gpt-4o-mini"": {""in"": 437, ""out"": 32}}"
+simulate-1@20261128-103150,S049,bao_mot_lan,1,đơn #A114 thiếu đồ,gpt-4o-mini,1,1,437,30,1.266,,"{""gpt-4o-mini"": {""in"": 437, ""out"": 30}}"
+simulate-1@20261128-103150,S050,bao_mot_lan,1,Đơn #A105 thiếu 1 ly trà sữa,gpt-4o-mini,2,3,655,75,2.268,,"{""gpt-4o-mini"": {""in"": 655, ""out"": 75}}"
